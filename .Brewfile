@@ -1,0 +1,10 @@
+asdf
+git
+neovim
+openssl
+postgresql
+tmux
+yarn
+jq
+readline
+jemalloc
