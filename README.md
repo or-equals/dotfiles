@@ -42,4 +42,12 @@ ssh-keygen -t rsa -C "plicjo@gmail.com"
 
 # Check to see if you're authenticated
 ssh -T git@github.com
+
+Download and install Vim Plug
+
+brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
+
+chsh -s /bin/zsh
+
+Make projects directory
 ```

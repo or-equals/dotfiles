@@ -72,7 +72,6 @@ if [ -n "$SSH_CONNECTION" ]; then
 else
   p='%{$fg_bold[green]%}%n@%m'
 fi
-PROMPT="$p%{\$reset_color%}:%{\$fg_bold[cyan]%}%~%{\$reset_color%}\$(git_prompt_info '(%s)')%# "
 
 # show non-success exit code in right prompt
 RPROMPT="%(?..{%{$fg[red]%}%?%{$reset_color%}})"
@@ -98,7 +97,6 @@ typeset -aU path
 command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 alias hcd="cd ~/projects"
 alias ss='rails server'
@@ -156,8 +154,8 @@ alias dcr="docker-compose run"
 alias dce="docker-compose exec"
 
 # Vim aliases
-alias vi='nvim . '
-alias vim='nvim . '
+alias vi='nvim'
+alias vim='nvim'
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
@@ -173,6 +171,6 @@ twiki () {
 autoload -U promptinit; promptinit
 prompt spaceship
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 plugins=(… zsh-completions)
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zshsource /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
