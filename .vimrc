@@ -11,23 +11,11 @@ nnoremap <SPACE> <Nop>
 " Ignore space key in visual mode
 vnoremap <SPACE> <Nop>
 
+"This unsets the "last search pattern" register by hitting return<Paste>
+nnoremap <CR> :noh<CR><CR>
+
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python'
-
-" Install vim-plug if it's not present
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-
-" DO NOT USE PLUGINS. These are not maintained
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-easytags' " Automatically generate tags files
-" Plug 'chun-yang/auto-pairs'
-" Plug 'Townk/vim-autoclose' " Automatically close bracket pairs
-" Plug 'nathanaelkane/vim-indent-guides'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
@@ -49,9 +37,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'elzr/vim-json'
-Plug 'rizzatti/dash.vim'
 Plug 'mustache/vim-mustache-handlebars'
-nnoremap <leader>d :Dash<cr>
 
 " Plug 'ervandew/supertab' " Supertab, an omnicomplete popup menu
 " http://vim.wikia.com/wiki/Omni_completion_popup_menu
@@ -158,9 +144,6 @@ nmap j <Plug>(accelerated_jk_gj)
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
 
-Plug 'rizzatti/dash.vim'
-nnoremap <leader>d :Dash<cr>
-
 Plug 'sheerun/vim-polyglot'
 
 " Visualize your vim undo tree
@@ -202,7 +185,10 @@ Plug 'w0rp/ale'
 Plug 'sukima/vim-javascript-imports'
 Plug 'tonchis/vim-to-github'
 
-Plug 'Yggdroot/indentLine' " Display thin vertical lines at code indentation levels
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 300
 
 " Themes
 Plug 'ayu-theme/ayu-vim'
@@ -211,6 +197,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'squarefrog/tomorrow-night.vim'
 Plug 'w0ng/vim-hybrid'
 let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog = "/Users/joshuaplicque/.asdf/shims/python"
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -223,7 +210,6 @@ set autoread                                       " Reload files changed outsid
 set background=dark                                " Always use colors for dark color schemes
 set backspace=indent,eol,start                     " Backspace configuration
 set cindent
-set colorcolumn=80,120                             " Add color markers to columns to identify where wraps should occur
 set encoding=utf-8                                 " Always UTF-8 enoding
 set eol                                            " include a new line at EOF
 set expandtab                                      " Expand tabs to spaces
@@ -244,7 +230,6 @@ set matchtime=5                                    " Show matching bracket for 0
 set mouse=                                         " Disable mouse
 set noerrorbells                                   " No sounds
 set nocursorcolumn                                 " Enable cursor column highlighting
-set cursorline                                     " Disable line highlighting, for performance
 set nofoldenable                                   " Don't fold files by default
 set norelativenumber                               " Disable relative line numbers for performance
 set noruler                                        " No ruler needed, because lightline
