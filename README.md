@@ -50,4 +50,7 @@ brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
 chsh -s /bin/zsh
 
 Make projects directory
+
+# Install spaceship-prompt for a prettier shell
+npm install -g spaceship-prompt
 ```
