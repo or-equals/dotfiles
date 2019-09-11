@@ -1,11 +1,9 @@
 call plug#begin('~/.config/nvim')
 
-
 set nocompatible  " We don't want vi compatibility.
 set termguicolors " Enable true color support
 set t_Co=256
 
-" let mapleader=" " " Use the space key as a leader
 " Ignore space key in normal mode
 nnoremap <SPACE> <Nop>
 " Ignore space key in visual mode
@@ -38,13 +36,6 @@ Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'
-
-" Plug 'ervandew/supertab' " Supertab, an omnicomplete popup menu
-" http://vim.wikia.com/wiki/Omni_completion_popup_menu
-" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<C-N>"
-
 Plug 'francoiscabrol/ranger.vim'
 
 Plug 'godlygeek/tabular' " Align text
@@ -69,11 +60,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 
 Plug 'junegunn/vim-easy-align'
-
-" Plug 'ludovicchabant/vim-gutentags' " Tag management
-" let g:gutentags_ctags_exclude=['.git', 'node_modules/**/*', 'tmp', 'frontend/**/*']
-" let g:gutentags_gtags_options_file="~/.ctags"
-" let g:gutentags_trace = 1
 
 Plug 'majutsushi/tagbar' " https://github.com/majutsushi/tagbar
 let g:tagbar_autofocus = 1
@@ -132,20 +118,20 @@ Plug 'mustache/vim-mustache-handlebars'
 " Plug 'mxw/vim-jsx'
 Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
-" Plug 'jason0x43/vim-js-indent'
-
-" Plug 'Raimondi/delimitMate' " Add automatic delimiters ([<{, quotes, etc
-
+"
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
 nmap k <Plug>(accelerated_jk_gk)
 nmap j <Plug>(accelerated_jk_gj)
-
+"
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
 
-Plug 'sheerun/vim-polyglot'
+Plug 'leafgarland/typescript-vim'
+let g:typescript_indent_disable = 1 " Prefer the below plugin for indentation
+Plug 'jason0x43/vim-js-indent'
 
+"
 " Visualize your vim undo tree
 Plug 'sjl/gundo.vim'
 nnoremap <leader>u :GundoToggle<cr>
@@ -162,7 +148,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'jgdavey/tslime.vim'
 let g:rspec_runner = "os_x_iterm2"
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-" let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 Plug 'tomtom/tcomment_vim'
 
@@ -205,6 +191,7 @@ inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 Plug 'ryanoasis/vim-devicons' " Add icons to plugins
 call plug#end()
 
+set noreadonly
 set autoindent                                     " Automatic indenting/formatting
 set autoread                                       " Reload files changed outside of vim
 set background=dark                                " Always use colors for dark color schemes
