@@ -29,5 +29,7 @@
 [github]
 	user = plicjo
 [user]
-	email = plicjo+github@gmail.com
+	email = plicjo@gmail.com
 	name = "Joshua Plicque"
+[rerere]
+        enabled = true
