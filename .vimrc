@@ -37,6 +37,8 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'AndrewRadev/ember_tools.vim'
 
 Plug 'godlygeek/tabular' " Align text
 nmap <Leader>t= :Tabularize /=<cr>
@@ -147,8 +149,8 @@ vmap <leader>v <Plug>(expand_region_shrink)
 Plug 'thoughtbot/vim-rspec'
 Plug 'jgdavey/tslime.vim'
 let g:rspec_runner = "os_x_iterm2"
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = 'call Send_to_Tmux("be rspec {spec}\n")'
+let g:rspec_command = "Dispatch be rspec {spec}"
 
 Plug 'tomtom/tcomment_vim'
 
@@ -439,8 +441,7 @@ augroup RubyStuff
 
 	" Use vim-rspec commands. Disabled, for now, because I want to use
 	" <leader>a for something else
-	" autocmd FileType ruby nmap <buffer> <Leader>t :call RunCurrentSpecFile()<cr>
-	" autocmd FileType ruby nmap <buffer> <Leader>s :call RunNearestSpec()<cr>
+	" autocmd FileType ruby nmap <buffer> <Leader>T :call RunNearestSpec()<cr>
 	" autocmd FileType ruby nmap <buffer> <Leader>l :call RunLastSpec()<cr>
 	" autocmd FileType ruby nmap <buffer> <Leader>a :call RunAllSpecs()<cr>
 
