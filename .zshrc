@@ -161,9 +161,14 @@ alias dce="docker-compose exec"
 alias vi='nvim'
 alias vim='nvim'
 
+# Silver Searcher aliases
+alias ag='ag --path-to-ignore ~/.ignore'
+
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+# export PATH="./vendor/bundle/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Ruby/Rails functions
 #
@@ -179,5 +184,3 @@ plugins=(… zsh-completions)
   # Set Spaceship ZSH as a prompt
   autoload -U promptinit; promptinit
   prompt spaceship
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
