@@ -142,7 +142,7 @@ alias gpr='git pull --rebase'
 alias gr='git rebase'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
-alias grim='git rebase -i master'
+alias grim='git pull --rebase origin master'
 alias gst='git status'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 
