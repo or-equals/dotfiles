@@ -103,11 +103,11 @@ command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
 alias hcd="cd ~/projects"
-alias ss='rails server'
+alias ss='bundle exec rails server'
 alias be="bundle exec"
-alias resetdb="rake db:drop && rake db:create && rake db:migrate && rake db:seed"
-alias groutes='rake routes | grep $@'
-alias sc='rails console'
+alias resetdb="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && buncle exec rake db:seed"
+alias groutes='bundle exec rake routes | grep $@'
+alias sc='bundle exec rails console'
 
 # File management aliases
 #
