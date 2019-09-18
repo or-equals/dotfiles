@@ -53,4 +53,7 @@ Make projects directory
 
 # Install spaceship-prompt for a prettier shell
 npm install -g spaceship-prompt
+
+# Faster testing in Ember
+https://gist.github.com/hjdivad/ea726b2caac4a8385788
 ```
