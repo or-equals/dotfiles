@@ -43,9 +43,7 @@ ssh-keygen -t rsa -C "plicjo@gmail.com"
 # Check to see if you're authenticated
 ssh -T git@github.com
 
-Download and install Vim Plug
-
-brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions
+Download and install Vim Plug for Neovim
 
 chsh -s /bin/zsh
 
@@ -53,7 +51,4 @@ Make projects directory
 
 # Install spaceship-prompt for a prettier shell
 npm install -g spaceship-prompt
-
-# Faster testing in Ember
-https://gist.github.com/hjdivad/ea726b2caac4a8385788
 ```
