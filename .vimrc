@@ -19,6 +19,7 @@ let g:python_host_prog = '/usr/local/bin/python'
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
+Plug 'plicjo/ember-testing-chrome.vim'
 let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 Plug 'arnar/vim-matchopen' " Highlight the last opened tag
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
