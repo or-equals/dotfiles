@@ -170,7 +170,10 @@ export PATH=$PATH:$GOPATH/bin
 # export PATH="./vendor/bundle/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# Ruby/Rails functions
+# Use the silver searcher for fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+ #Ruby/Rails functions
 #
 twiki () {
   rake db:migrate && rake db:migrate:redo && rake db:test:prepare
