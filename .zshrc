@@ -102,7 +102,6 @@ command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh 
 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
-alias hcd="cd ~/projects"
 alias ss='bundle exec rails server'
 alias be="bundle exec"
 alias resetdb="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && buncle exec rake db:seed"
@@ -166,6 +165,7 @@ alias ag='ag --path-to-ignore ~/.ignore'
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
+export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
 # export PATH="./vendor/bundle/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
