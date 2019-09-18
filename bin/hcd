@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Usage: hcd <directory>
+#
+# Summary: Change to a folder within $SOURCE_DIR
+#
+# Help: Change to a folder within $SOURCE_DIR
+#
+# Note: This command requires $SOURCE_DIR to be set.
+
+base="$HOME/projects"
+
+if [ "$1" = "--complete" ]; then
+  ls "$base"
+  exit 0
+fi
+
+echo "$base/$1"
