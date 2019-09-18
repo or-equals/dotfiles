@@ -4,5 +4,6 @@
 .DS_Store
 /tags
 /vendor/bundle
+/node_modules
 /logs
 /tmp
