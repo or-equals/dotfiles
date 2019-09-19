@@ -21,7 +21,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 Plug 'plicjo/ember-testing-chrome.vim'
 let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
-Plug 'arnar/vim-matchopen' " Highlight the last opened tag
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
 Plug 'blueyed/vim-diminactive' " Diable syntax highlight for inactive windows
 let g:diminactive_use_syntax = 1
@@ -147,15 +146,10 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'sukima/vim-javascript-imports'
 Plug 'tonchis/vim-to-github'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 300
+Plug 'zxqfl/tabnine-vim'
 
 " Themes
 Plug 'w0ng/vim-hybrid'
-let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = "/Users/joshuaplicque/.asdf/shims/python"
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 
