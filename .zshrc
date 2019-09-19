@@ -1,9 +1,7 @@
 . /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 fpath=(
   $fpath
-  ~/.rvm/scripts/zsh/Completion
   ~/.zsh/functions
   /usr/local/share/zsh/site-functions
 )
