@@ -102,6 +102,7 @@ command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh 
 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
+alias hcd="cd ~/projects"
 alias ss='bundle exec rails server'
 alias be="bundle exec"
 alias resetdb="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && buncle exec rake db:seed"
@@ -181,6 +182,7 @@ twiki () {
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/bin/zsh-z.plugin.zsh
 
 plugins=(… zsh-completions)
 
