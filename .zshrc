@@ -102,7 +102,7 @@ export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-j
 
 alias ss='bundle exec rails server'
 alias be="bundle exec"
-alias resetdb="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && buncle exec rake db:seed"
+alias resetdb="bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate && buncle exec rails db:seed"
 alias groutes='bundle exec rake routes | grep $@'
 alias sc='bundle exec rails console'
 
@@ -141,7 +141,6 @@ alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias grm='git pull --rebase origin master'
 alias gst='git status'
-alias reset-authors='git commit --amend --reset-author -C HEAD'
 
 # Docker aliases
 #
