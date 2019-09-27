@@ -19,8 +19,9 @@ let g:python_host_prog = '/usr/local/bin/python'
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
-Plug 'plicjo/ember-testing-chrome.vim'
+Plug 'plicjo/ember-qunit-testing.vim'
 let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
+Plug 'arnar/vim-matchopen' " Highlight the last opened tag
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
 Plug 'blueyed/vim-diminactive' " Diable syntax highlight for inactive windows
 let g:diminactive_use_syntax = 1
@@ -45,6 +46,11 @@ nmap <Leader>t, :Tabularize /,\zs<cr>
 vmap <Leader>t, :Tabularize /,\zs<cr>
 Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
 Plug 'juanibiapina/vim-lighttree'
 Plug 'junegunn/fzf.vim'
 Plug 'jgdavey/tslime.vim'
@@ -146,10 +152,15 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 Plug 'sukima/vim-javascript-imports'
 Plug 'tonchis/vim-to-github'
-Plug 'zxqfl/tabnine-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 300
 
 " Themes
 Plug 'w0ng/vim-hybrid'
+let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog = "/Users/joshuaplicque/.asdf/shims/python"
 " Use <tab> key to step into the selections
 inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -169,8 +180,7 @@ set expandtab                                      " Expand tabs to spaces
 set foldcolumn=2
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
-set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+set grepprg=ag\ --nogroup\ --nocolor               " User The Silver Searcher for search
 set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
 set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 set hidden                                         " Required for operations modifying multiple buffers like rename.
