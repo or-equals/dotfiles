@@ -142,7 +142,6 @@ alias grs='git rebase --skip'
 alias grc='git rebase --continue'
 alias grm='git pull --rebase origin master'
 alias gst='git status'
-alias reset-authors='git commit --amend --reset-author -C HEAD'
 
 # Docker aliases
 #
