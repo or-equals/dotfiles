@@ -194,6 +194,7 @@ set foldcolumn=2
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
 set grepprg=ag\ --nogroup\ --nocolor               " User The Silver Searcher for search
+set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
 set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 set hidden                                         " Required for operations modifying multiple buffers like rename.
 set history=10000                                  " Max history
