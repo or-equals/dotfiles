@@ -31,6 +31,7 @@ Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-projectionist'
+Plug 'kchmck/vim-coffee-script'
 Plug 'AndrewRadev/ember_tools.vim'
 Plug 'godlygeek/tabular' " Align text
 nmap <Leader>t= :Tabularize /=<cr>
