@@ -52,6 +52,25 @@ let g:lightline = {
       \ }
 Plug 'juanibiapina/vim-lighttree'
 Plug 'junegunn/fzf.vim'
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+  let height = float2nr(&lines * 0.5)
+  let width = float2nr(&columns * 0.6)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
 Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
 let g:turbux_runner  = 'tslime' " default: vimux OR tslime OR vim
