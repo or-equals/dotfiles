@@ -19,7 +19,7 @@ let g:python_host_prog = '/usr/local/bin/python'
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
-Plug 'plicjo/ember-testing-chrome.vim'
+Plug 'plicjo/ember-qunit-testing.vim'
 let g:closetag_filenames = '*.html,*.xhtml,*.html.erb,*.eex'
 Plug 'bfontaine/brewfile.vim' " Brewfile syntax highlighting
 Plug 'blueyed/vim-diminactive' " Diable syntax highlight for inactive windows
@@ -45,6 +45,11 @@ nmap <Leader>t, :Tabularize /,\zs<cr>
 vmap <Leader>t, :Tabularize /,\zs<cr>
 Plug 'guns/xterm-color-table.vim' " View xterm colors with :XtermColorTable
 Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
 Plug 'juanibiapina/vim-lighttree'
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_OPTS='--layout=reverse'
@@ -188,9 +193,7 @@ set expandtab                                      " Expand tabs to spaces
 set foldcolumn=2
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
-set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep instead of ag for :Ag commands
-set grepformat=%f:%l:%c:%m,%f:%l:%m
-set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
+set grepprg=ag\ --nogroup\ --nocolor               " User The Silver Searcher for search
 set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 set hidden                                         " Required for operations modifying multiple buffers like rename.
 set history=10000                                  " Max history
@@ -528,8 +531,6 @@ vnoremap <c-j> <c-w>j
 vnoremap <c-k> <c-w>k
 vnoremap <c-h> <c-w>h
 vnoremap <c-l> <c-w>l
-
-highlight link MatchOpen Error
 
 highlight Search cterm=NONE guibg=#00ffdf guifg=#ffffff " Change highlight color
 highlight IncSearch cterm=NONE guibg=#00ffdf guifg=#ffffff " Change highlight color in incremental searches
