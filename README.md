@@ -27,14 +27,13 @@ Do the following steps:
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Install Dropbox and 1Password to get all the necessary passwords
-
 # After installing git, clone this directory and place the files in the home directory.
 
 # Install brew packages from the .Brewfile
 brew bundle
 
-Download and install Vim Plug for Neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 chsh -s /bin/zsh
 
