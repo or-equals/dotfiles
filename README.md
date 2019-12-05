@@ -34,14 +34,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 # Install brew packages from the .Brewfile
 brew bundle
 
-# Authenticate with Github via SSH key
-ssh-keygen -t rsa -C "plicjo@gmail.com"
-
-# Paste the above output here: https://github.com/settings/keys
-
-# Check to see if you're authenticated
-ssh -T git@github.com
-
 Download and install Vim Plug for Neovim
 
 chsh -s /bin/zsh
