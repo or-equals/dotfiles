@@ -29,6 +29,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # After installing git, clone this directory and place the files in the home directory.
 
+chmod +x ~/bin/*
+
 # Install brew packages from the .Brewfile
 brew bundle
 
@@ -36,6 +38,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 chsh -s /bin/zsh
+
 
 Make projects directory
 
