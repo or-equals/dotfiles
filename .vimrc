@@ -174,6 +174,10 @@ Plug 'sukima/vim-javascript-imports'
 Plug 'tonchis/vim-to-github'
 Plug 'zxqfl/tabnine-vim'
 
+" Global Find and Replace
+Plug 'brooth/far.vim'
+let g:far#source = 'agnvim'
+
 " Themes
 Plug 'w0ng/vim-hybrid'
 " Use <tab> key to step into the selections
@@ -374,9 +378,6 @@ command! -bang -nargs=* Rg
 \ <bang>0)
 
 " Use a preview window with the Files command
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
 " This command is used with a shortcut key below to find all occurences of the
 " word beneath the cursor
 command! -bang -nargs=* Find
