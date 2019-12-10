@@ -34,6 +34,8 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'kchmck/vim-coffee-script'
 Plug 'AndrewRadev/ember_tools.vim'
+" Jade/Pug Templates
+Plug 'digitaltoad/vim-pug'
 Plug 'godlygeek/tabular' " Align text
 nmap <Leader>t= :Tabularize /=<cr>
 vmap <Leader>t= :Tabularize /=<cr>
