@@ -131,7 +131,7 @@ Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
 Plug 'mustache/vim-mustache-handlebars'
-" Plug 'mxw/vim-jsx'
+Plug 'sheerun/vim-polyglot'
 Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
 " j and k keys move faster when held down
