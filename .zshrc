@@ -2,7 +2,6 @@
 
 fpath=(
   $fpath
-  ~/.rvm/scripts/zsh/Completion
   ~/.zsh/functions
   /usr/local/share/zsh/site-functions
 )
@@ -33,7 +32,7 @@ zstyle ':completion:*' cache-path ~/.zshcache
 # make with the pretty colors
 autoload colors; colors
 
-# just say no to zle vim mode:
+# Just say no to zle vim mode:
 bindkey -e
 
 # options
@@ -184,6 +183,10 @@ source ~/bin/zsh-z.plugin.zsh
 
 plugins=(… zsh-completions)
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+# Import local zsh customizations, if present
+zrcl="$HOME/.zshrc.local"
+[[ ! -a $zrcl ]] || source $zrcl
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
