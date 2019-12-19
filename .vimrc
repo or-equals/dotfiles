@@ -13,7 +13,7 @@ vnoremap <SPACE> <Nop>
 nnoremap <CR> :noh<CR><CR>
 
 let g:python3_host_prog = '~/.asdf/shims/python3'
-let g:python_host_prog = '~/.asdf/shims/python'
+let g:python_host_prog = '~/.asdf/shims/python2'
 
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
