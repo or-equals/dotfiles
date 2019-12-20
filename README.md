@@ -1,6 +1,6 @@
 # Dotfiles
 
-I use NeoVim/Tmux/zsh for my development environment.
+I use NeoVim with Tmux for my development environment.
 
 ## Installations
 
@@ -9,39 +9,18 @@ I use NeoVim/Tmux/zsh for my development environment.
 * [Dash](https://kapeli.com/dash) for quick documentation lookup.
 * [Dropbox](https://www.dropbox.com) for file storage.
 * [Patina](https://apps.apple.com/us/app/patina-paint-draw-and-sketch-with-ease/id942568098?mt=12) for basic image editing.
-* [Paw](https://paw.cloud) as an API testing tool.
 * [Postgres App](https://postgresapp.com/) for easy Postgres database management.
-* [Wunderlist](https://www.wunderlist.com/) for life management.
+* [Microsoft Todo](https://www.wunderlist.com/) for life management.
 * [iTerm](https://www.iterm2.com/) for an improved terminal.
 
 ## Setup
 
-Install all of the tools above.
+1. Install all of the tools above.
 
-I'd like to automate the following steps via a shell script.
+2. Clone this repository and run the setup script.
 
-Do the following steps:
-
-```bash
-
-# Install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# After installing git, clone this directory and place the files in the home directory.
-
-chmod +x ~/bin/*
-
-# Install brew packages from the .Brewfile
-brew bundle
-
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-chsh -s /bin/zsh
-
-
-Make projects directory
-
-# Install spaceship-prompt for a prettier shell
-npm install -g spaceship-prompt
+```
+git clone https://github.com/plicjo/dotfiles.git
+cd dotfiles
+./setup
 ```
