@@ -41,15 +41,20 @@ asdf plugin-add python
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
-# asdf global python 3.6.2 2.7.13
+
+#######################################################
+#
+# Install yarn
+#
+#######################################################
+curl -o- -L https://yarnpkg.com/install.sh | bash
 
 #######################################################
 #
 # neovim/python stuff for TabNine
 #
 #######################################################
-pip2 install --user --upgrade pip setuptools pynvim
-pip3 install --user --upgrade pip setuptools pynvim
+python -m pip install --upgrade pip pynvim
 
 #######################################################
 #
