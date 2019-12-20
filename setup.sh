@@ -64,7 +64,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 #
 #######################################################
 ln -sf "$(pwd)/.bundle" ~/.bundle
-ln -sf "$(pwd)/init.vim" ~/.config/nvim/init.vim
+ln -sf "$(pwd)/.config/nvim/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.zsh/functions" ~/.zsh/functions
 ln -sf "$(pwd)/bin/" ~/bin
 
