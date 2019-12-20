@@ -9,7 +9,6 @@ if [ ! $(which brew) ]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-brew tap caskroom/cask
 brew bundle --verbose
 
 #######################################################
@@ -28,22 +27,21 @@ done
 #
 #######################################################
 xcode-select --install
-sudo xcodebuild -license
 
 #######################################################
 #
 # asdf for programming language version management
 #
 #######################################################
-~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-~/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-~/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-~/.asdf/bin/asdf plugin-add python https://github.com/asdf-vm/asdf-python.git
+asdf plugin-add erlang
+asdf plugin-add elixir
+asdf plugin-add ruby
+asdf plugin-add nodejs
+asdf plugin-add python
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
-asdf global python 3.6.2 2.7.13
+# asdf global python 3.6.2 2.7.13
 
 #######################################################
 #

@@ -22,5 +22,5 @@ I use NeoVim with Tmux for my development environment.
 ```
 git clone https://github.com/plicjo/dotfiles.git
 cd dotfiles
-./setup
+./setup.sh
 ```
