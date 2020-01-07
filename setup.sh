@@ -85,6 +85,7 @@ ln -sf "$(pwd)/.irbrc" ~/.irbrc
 ln -sf "$(pwd)/.pryrc" ~/.pryrc
 ln -sf "$(pwd)/.railsrc" ~/.railsrc
 ln -sf "$(pwd)/.rspec" ~/.rspec
+ln -sf "$(pwd)/.rubocop.yml" ~/.rubocop.yml
 ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/.tool-versions" ~/.tool-versions
 ln -sf "$(pwd)/.vimrc" ~/.vimrc
