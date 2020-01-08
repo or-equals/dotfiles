@@ -91,7 +91,7 @@ ln -sf "$(pwd)/.tool-versions" ~/.tool-versions
 ln -sf "$(pwd)/.vimrc" ~/.vimrc
 ln -sf "$(pwd)/.zshrc" ~/.zshrc
 
-echo "Symlink or create your .zhrc.local file"
+echo "Symlink or create your .zshrc.local file"
 
 #######################################################
 #
@@ -100,5 +100,6 @@ echo "Symlink or create your .zhrc.local file"
 #
 #######################################################
 mkdir ~/projects
+npm install -g npm
 yes no | npm install -g spaceship-prompt
 ln -s /Applications/Atom.app/Contents/Resources/app/atom.sh /usr/local/bin/atom
