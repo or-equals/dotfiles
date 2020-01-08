@@ -577,3 +577,4 @@ nnoremap Y y$
 
 " Replace old school ruby hashes with modern day syntax
 nnoremap hs :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
+nnoremap hq :%s/\"\([^"]*\)\"/'\1'/g
