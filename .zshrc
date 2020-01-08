@@ -161,7 +161,7 @@ alias vim='nvim'
 # Silver Searcher aliases
 alias ag='ag --path-to-ignore ~/.ignore'
 
-alias reload='source ~/.zshrc; source ~/.vimrc; echo -e "\n\u2699  \e[33mZSH and VIM config reloaded\e[0m \u2699"'
+alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "\n\u2699  \e[33mZSH and VIM config reloaded\e[0m \u2699"'
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
