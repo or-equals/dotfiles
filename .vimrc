@@ -76,6 +76,7 @@ Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
 let g:turbux_runner  = 'tslime' " default: vimux OR tslime OR vim
 let g:turbux_command_rspec  = 'bundle exec rspec'
+let g:turbux_command_cucumber  = 'bundle exec cucumber'
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
@@ -128,6 +129,8 @@ Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-cucumber'
+Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
 Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
