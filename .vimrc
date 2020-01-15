@@ -124,6 +124,14 @@ Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected 
 let g:move_key_modifier = 'C'
 " Use paste values as a stack. option+P & shift+option+P will cycle thru
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+autocmd FileType html,css EmmetInstall
 Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
