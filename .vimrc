@@ -141,7 +141,7 @@ Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
 Plug 'ngmy/vim-rubocop'
-Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte'
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
 nmap k <Plug>(accelerated_jk_gk)
