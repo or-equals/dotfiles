@@ -106,7 +106,7 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/EmptyLines:
   Enabled: true
 
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   Enabled: true
 
 # Use Ruby >= 1.9 syntax for hashes. Prefer { a: :b } over { :a => :b }.
@@ -181,7 +181,7 @@ Layout/Tab:
   Enabled: true
 
 # Blank lines should not have any spaces.
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
 
 # No trailing whitespace.
@@ -196,7 +196,7 @@ Lint/Debugger:
 Lint/RequireParentheses:
   Enabled: true
 
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Enabled: true
 
 Lint/UriEscapeUnescape:
@@ -211,7 +211,7 @@ Style/StringLiterals:
   EnforcedStyle: single_quotes
 
 # Use quotes for string literals when they are enough.
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Enabled: true
 
 # Use foo.zero?, foo.negative? or foo.postive? instead of ==, <, >
