@@ -1,7 +1,7 @@
 [branch]
 	autosetuprebase = always
 [color]
-	ui = auto
+	ui = true
 [core]
 	excludesfile = ~/.ignore
 	editor = /usr/local/bin/nvim
@@ -30,6 +30,6 @@
 	user = plicjo
 [user]
 	email = plicjo@gmail.com
-	name = "Joshua Plicque"
+	name = Joshua Plicque
 [rerere]
         enabled = true
