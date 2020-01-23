@@ -2,3 +2,4 @@ FILES
 .vim/bundle
 .vim/.netrwhist
 Brewfile.lock.json
+.bundle/
