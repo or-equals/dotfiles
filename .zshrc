@@ -141,6 +141,7 @@ alias gra='git rebase --abort'
 alias grs='git rebase --skip'
 alias grc='git rebase --continue'
 alias grm='git pull --rebase origin master'
+alias prunemerged='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias gst='git status'
 
 # Docker aliases
