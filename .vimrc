@@ -124,14 +124,6 @@ Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected 
 let g:move_key_modifier = 'C'
 " Use paste values as a stack. option+P & shift+option+P will cycle thru
 Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-autocmd FileType html,css EmmetInstall
 Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
@@ -141,7 +133,6 @@ Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
 Plug 'ngmy/vim-rubocop'
-Plug 'evanleck/vim-svelte'
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
 nmap k <Plug>(accelerated_jk_gk)
@@ -149,9 +140,6 @@ nmap j <Plug>(accelerated_jk_gj)
 "
 " See git diff in commit window as another pane
 Plug 'rhysd/committia.vim'
-Plug 'leafgarland/typescript-vim'
-let g:typescript_indent_disable = 1 " Prefer the below plugin for indentation
-Plug 'jason0x43/vim-js-indent'
 " Visualize your vim undo tree
 Plug 'sjl/gundo.vim'
 nnoremap <leader>u :GundoToggle<cr>
@@ -178,9 +166,7 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'w0rp/ale'
-Plug 'sukima/vim-javascript-imports'
+Plug 'dense-analysis/ale'
 Plug 'tonchis/vim-to-github'
 Plug 'zxqfl/tabnine-vim'
 
@@ -400,36 +386,6 @@ command! -bang -nargs=* Find
 nnoremap K :Find <cr>
 nnoremap <leader>p :Files<cr>
 
-" Pretty format json!
-" https://til.hashrocket.com/posts/ha0ci0pvkj-format-json-in-vim-with-jq
-" nnoremap <C-p> :%!jq '.'<cr>
-
-" Start on last line edited
-if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-	" For shell files, always add a comment leader following <Enter>
-	au FileType sh setlocal fo+=r
-	au FileType dockerfile setlocal fo+=r
-endif
-
-augroup RubyStuff
-	autocmd!
-	" Read Envfile as ruby
-	au BufRead,BufNewFile Envfile setfiletype ruby
-
-	" Indent haml files
-	autocmd FileType haml,ruby setlocal foldmethod=indent
-
-	" vim-ruby completion
-	autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-	autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-	autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-
-	" Use old regular expression engine because it's faster
-	set re=1
-augroup END
-
 " ALE
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L400-L404
 " Enable completion where available
@@ -441,7 +397,7 @@ let g:ale_sign_column_always = 1
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 highlight ALEWarning ctermbg=LightGreen
-
+"
 function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
