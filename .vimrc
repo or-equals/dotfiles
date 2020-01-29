@@ -244,6 +244,9 @@ set viewoptions=cursor,curdir,folds,unix,slash
 set viewdir=~/.vim/views
 set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 set visualbell                                     " No visual feedback
+set nobackup
+set noswap
+set noundofile
 
 " tt toggles between current and last tab
 let g:lasttab = 1
