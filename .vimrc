@@ -26,7 +26,6 @@ Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'kchmck/vim-coffee-script'
@@ -128,7 +127,6 @@ Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
