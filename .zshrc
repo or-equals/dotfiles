@@ -193,3 +193,4 @@ zrcl="$HOME/.zshrc.local"
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+export PATH="/usr/local/sbin:$PATH"
