@@ -245,7 +245,6 @@ set viewdir=~/.vim/views
 set viminfo^=!                                     " Add recently accessed projects menu (project plugin)
 set visualbell                                     " No visual feedback
 set nobackup
-set noswap
 set noundofile
 
 " tt toggles between current and last tab
