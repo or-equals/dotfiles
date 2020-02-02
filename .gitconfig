@@ -1,35 +1,35 @@
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [color]
-	ui = true
+  ui = true
 [core]
-	excludesfile = ~/.ignore
-	editor = /usr/local/bin/nvim
-	whitespace = warn
+  excludesfile = ~/.ignore
+  editor = /usr/local/bin/nvim
+  whitespace = warn
 [help]
-	autocorrect = 10
+  autocorrect = 10
 [interactive]
-	singlekey = true
+  singlekey = true
 [merge]
-	summary = true
+  summary = true
 [merge "bundlelock"]
-	name = lock Gemfile
-	driver = bundle install
+  name = lock Gemfile
+  driver = bundle install
 [merge "bundle"]
-	name = bundle
-	driver = bundle
+  name = bundle
+  driver = bundle
 [push]
-	default = tracking
+  default = tracking
 [rebase]
-	autosquash = true
+  autosquash = true
 [diff]
-	algorithm = patience
+  algorithm = patience
 [fetch]
-	prune = true
+  prune = true
 [github]
-	user = plicjo
+  user = plicjo
 [user]
 	email = plicjo@gmail.com
 	name = Joshua Plicque
 [rerere]
-        enabled = true
+  enabled = true
