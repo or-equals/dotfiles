@@ -130,6 +130,7 @@ let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands'
 Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'ngmy/vim-rubocop'
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
@@ -150,7 +151,7 @@ vmap <leader>v <Plug>(expand_region_shrink)
 Plug 'thoughtbot/vim-rspec'
 Plug 'ervandew/supertab'
 Plug 'jgdavey/vim-blockle'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-characterize' " Add Unicode character metadata when using ga
