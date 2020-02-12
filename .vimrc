@@ -130,7 +130,6 @@ let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands'
 Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ngmy/vim-rubocop'
 " j and k keys move faster when held down
 Plug 'rhysd/accelerated-jk'
