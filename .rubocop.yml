@@ -49,12 +49,6 @@ Performance:
 Style/AndOr:
   Enabled: true
 
-# Do not use braces for hash literals when they are the last argument of a
-# method call.
-Style/BracesAroundHashParameters:
-  Enabled: true
-  EnforcedStyle: context_dependent
-
 # Use stabby lambda for both {} and do/end
 Style/Lambda:
   Enabled: true
