@@ -72,8 +72,8 @@ ln -sf "$(pwd)/.bundle" ~/.bundle
 mkdir ~/.config/nvim
 ln -sf "$(pwd)/.config/nvim/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.zsh/functions" ~/.zsh/functions
-ln -sf "$(pwd)/bin/" ~/bin
-
+mkdir ~/bin
+ln -sf "$(pwd)/bin"/* ~/bin/
 ln -sf "$(pwd)/.asdfrc" ~/.asdfrc
 ln -sf "$(pwd)/.clippy.rb" ~/.clippy.rb
 ln -sf "$(pwd)/.ctags" ~/.ctags
