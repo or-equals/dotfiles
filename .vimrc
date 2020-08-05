@@ -24,12 +24,16 @@ let g:diminactive_use_syntax = 1
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'andyl/vim-textobj-elixir'
+Plug 'mhinz/vim-mix-format'
+let g:mix_format_on_save = 1
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'kchmck/vim-coffee-script'
 Plug 'AndrewRadev/ember_tools.vim'
+Plug 'joukevandermaas/vim-ember-hbs'
 " Jade/Pug Templates
 Plug 'digitaltoad/vim-pug'
 Plug 'godlygeek/tabular' " Align text
