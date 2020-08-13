@@ -24,6 +24,7 @@ let g:diminactive_use_syntax = 1
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'kana/vim-textobj-user'
 Plug 'andyl/vim-textobj-elixir'
 Plug 'mhinz/vim-mix-format'
 let g:mix_format_on_save = 1
