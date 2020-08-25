@@ -26,8 +26,6 @@ Plug 'editorconfig/editorconfig-Vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'kana/vim-textobj-user'
 Plug 'andyl/vim-textobj-elixir'
-Plug 'mhinz/vim-mix-format'
-let g:mix_format_on_save = 1
 Plug 'elzr/vim-json'
 Plug 'slim-template/vim-slim'
 Plug 'francoiscabrol/ranger.vim'
