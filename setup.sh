@@ -39,15 +39,8 @@ asdf plugin-add ruby
 asdf plugin-add nodejs
 asdf plugin-add python
 
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+# bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
-
-#######################################################
-#
-# Install yarn
-#
-#######################################################
-curl -o- -L https://yarnpkg.com/install.sh | bash
 
 #######################################################
 #
