@@ -102,5 +102,4 @@ echo "Symlink or create your .zshrc.local file"
 #######################################################
 mkdir ~/projects
 npm install -g npm
-yes no | npm install -g spaceship-prompt
 ln -s /Applications/Atom.app/Contents/Resources/app/atom.sh /usr/local/bin/atom

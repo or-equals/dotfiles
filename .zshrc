@@ -191,7 +191,5 @@ plugins=(… zsh-completions)
 zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+eval "$(starship init zsh)"
 export PATH="/usr/local/sbin:$PATH"
