@@ -187,6 +187,9 @@ source ~/bin/zsh-z.plugin.zsh
 
 plugins=(… zsh-completions)
 
+# Remember Elixir History
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
