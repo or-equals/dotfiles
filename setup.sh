@@ -39,7 +39,7 @@ asdf plugin-add ruby
 asdf plugin-add nodejs
 asdf plugin-add python
 
-# bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
 
 #######################################################
@@ -62,6 +62,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 #
 #######################################################
 ln -sf "$(pwd)/.bundle" ~/.bundle
+mkdir ~/.config
 mkdir ~/.config/nvim
 ln -sf "$(pwd)/.config/nvim/init.vim" ~/.config/nvim/init.vim
 ln -sf "$(pwd)/.zsh/functions" ~/.zsh/functions
