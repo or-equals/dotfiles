@@ -1,6 +1,7 @@
 # Dotfiles
 
 NeoVim with Tmux is the default development environment.
+This configuration is optimized for Elixir/Ruby/Javascript development.
 
 ## Installations
 
