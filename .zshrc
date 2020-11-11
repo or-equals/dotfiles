@@ -94,12 +94,19 @@ command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh 
 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
+# Rails alises
 alias ss='bundle exec rails server'
 alias be="bundle exec"
 alias fr='forego run'
 alias resetdb="bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails db:seed"
 alias groutes='groutes() { bundle exec rake routes | grep $1 }; groutes'
 alias sc='bundle exec rails console'
+
+# Phoenix aliases
+alias im='iex -S mix'
+alias pss='mix phx.server'
+alias ho='mix hex.outdated'
+alias proutes='proutes() { mix phx.routes | grep $1 }; proutes'
 
 # File management aliases
 #
