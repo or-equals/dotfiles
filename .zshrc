@@ -160,9 +160,6 @@ alias dce="docker-compose exec"
 alias vi='nvim'
 alias vim='nvim'
 
-# Silver Searcher aliases
-alias ag='ag --path-to-ignore ~/.ignore'
-
 alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "\n\u2699  \e[33mZSH and VIM config reloaded\e[0m \u2699"'
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
@@ -170,10 +167,13 @@ export GOPATH=$HOME/go
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
 
-# Use the silver searcher for fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# Silver Searcher aliases
+alias fd='fd -E ~/.ignore'
 
- #Ruby/Rails functions
+# Use fd as the searching tool for fzf
+export FZF_DEFAULT_COMMAND='fd --type f -E ~/.ignore'
+
+# Ruby/Rails functions
 #
 twiki () {
   bundle exec rails db:migrate && bundle exec rails db:migrate:redo && bundle exec rails db:test:prepare
