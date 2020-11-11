@@ -168,10 +168,8 @@ export GOPATH=$HOME/go
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
 
-# Silver Searcher aliases
-alias fd='fd -E ~/.ignore'
-
 # Use fd as the searching tool for fzf
+alias fd='fd -E ~/.ignore'
 export FZF_DEFAULT_COMMAND='fd --type f -E ~/.ignore'
 
 # Ruby/Rails functions
