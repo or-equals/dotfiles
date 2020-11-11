@@ -358,33 +358,6 @@ noremap <leader>q :wqa<cr>
 " LightTree is an in-window file explorer
 map <leader>e :LightTree<cr>
 
-" ripgrep customization
-"
-" http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "!{.git,log,coverage,node_modules,vendor,frontend,tmp}/*"
-  \ -g "!tmux*"
-  \ -g "!*.log"
-  \ -g "!tags"
-  \ '
-  " \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-
-command! -bang -nargs=* Rg
-\ call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1,
-\ <bang>0 ? fzf#vim#with_preview('up:60%')
-\         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\ <bang>0)
-
-" Use a preview window with the Files command
-" This command is used with a shortcut key below to find all occurences of the
-" word beneath the cursor
-command! -bang -nargs=* Find
-\ call fzf#vim#grep(g:rg_command .shellescape(expand('<cword>')), 1,
-\ <bang>0 ? fzf#vim#with_preview('up:60%')
-\         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\ <bang>0)
-
 " bind F to ripgrep word under cursor
 nnoremap K :Find <cr>
 nnoremap <leader>p :Files<cr>

@@ -13,9 +13,6 @@ export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
 
-# make with the nice completion
-autoload -U compinit; compinit
-
 # Completion for kill-like commands
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
@@ -89,9 +86,6 @@ setopt INC_APPEND_HISTORY
 (( ${+PAGER}   )) || export PAGER='less'
 (( ${+EDITOR}  )) || export EDITOR='vim'
 export PSQL_EDITOR='vim -c"setf sql"'
-
-# set cd autocompletion to commonly visited directories
-cdpath=(~ ~/src $DEV_DIR $SOURCE_DIR)
 
 # remove duplicates in $PATH
 typeset -aU path
