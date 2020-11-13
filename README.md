@@ -23,3 +23,4 @@ git clone https://github.com/plicjo/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
+3. Fire up vim and install the plugins with `:PlugInstall`
