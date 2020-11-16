@@ -121,6 +121,10 @@ alias rd='rmdir'
 
 # Git aliases
 #
+alias dci='git duet-commit'
+alias drv='git duet-revert'
+alias dmg='git duet-merge'
+alias drb="git rebase -i --exec 'git duet-commit --amend'"
 alias gap='git add -p'
 alias gb='git branch'
 alias gc='git commit -v'
@@ -167,6 +171,9 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
+
+# More info: https://github.com/git-duet/git-duet/#co-authored-by-trailer-support
+export GIT_DUET_CO_AUTHORED_BY=1
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
