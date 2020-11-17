@@ -104,7 +104,7 @@ alias sc='bundle exec rails console'
 
 # Phoenix aliases
 alias im='iex -S mix'
-alias pss='mix phx.server'
+alias pss='iex -S mix phx.server'
 alias ho='mix hex.outdated'
 alias proutes='proutes() { mix phx.routes | grep $1 }; proutes'
 
