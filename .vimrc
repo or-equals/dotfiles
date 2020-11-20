@@ -196,7 +196,7 @@ set expandtab                                      " Expand tabs to spaces
 set foldcolumn=2
 set foldnestmax=12                                 " Deepest fold
 set formatoptions+=j                               " Join comments better
-set grepprg=ag\ --nogroup\ --nocolor               " User The Silver Searcher for search
+set grepprg=rg\ --vimgrep\ --no-heading            " Use ripgrep for search
 set guicursor=a:blinkon0-Cursor/Cursor             " Turn off blink for all modes
 set guicursor+=i:blinkwait0-blinkon100-blinkoff100 " Turn on blinking in insert mode
 set hidden                                         " Required for operations modifying multiple buffers like rename.
@@ -361,6 +361,62 @@ map <leader>e :LightTree<cr>
 " bind F to ripgrep word under cursor
 nnoremap K :Find <cr>
 nnoremap <leader>p :Files<cr>
+
+" ripgrep customization
+" http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --ignore --ignore-global --hidden --no-follow --color "always"
+  \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
+  \ -g "!spec/vcr/*"
+  \ '
+
+" https://github.com/junegunn/fzf.vim/issues/419#issuecomment-479687537
+command! -bang -nargs=* Rg
+\ call fzf#vim#grep(
+\    g:rg_command
+\    . (len(<q-args>) > 0 ? shellescape(<q-args>) : '""'), 1,
+\ <bang>0 ? fzf#vim#with_preview('up:60%')
+\         : fzf#vim#with_preview('right:50%:hidden', '?'),
+\ <bang>0)
+
+
+let g:rg_case_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
+  \ -g "!.git/*"
+  \ -g "!.elixir_ls/*"
+  \ -g "!spec/vcr/*"
+  \ '
+
+command! -bang -nargs=* Rgg
+\ call fzf#vim#grep(
+\    g:rg_case_command
+\    . shellescape(<q-args>), 1,
+\ <bang>0 ? fzf#vim#with_preview('up:60%')
+\         : fzf#vim#with_preview('right:50%:hidden', '?'),
+\ <bang>0)
+
+" Use a preview window with the Files command
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" This command is used with a shortcut key below to find all occurences of the
+" word beneath the cursor
+command! -bang -nargs=* Find
+\ call fzf#vim#grep(g:rg_command .shellescape(expand('<cword>')), 1,
+\ <bang>0 ? fzf#vim#with_preview('up:60%')
+\         : fzf#vim#with_preview('right:50%:hidden', '?'),
+\ <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " ALE
 " https://github.com/statico/dotfiles/blob/202e30b23e5216ffb6526cce66a0ef4fa7070456/.vim/vimrc#L400-L404
