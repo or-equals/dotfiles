@@ -13,11 +13,11 @@ This configuration is optimized for Elixir/Ruby/Javascript development.
 ## Setup
 1. Install all of the tools above.
 
-1. Clone this repository and run the setup script.
+2. Clone this repository and run the setup script.
 ```
 git clone https://github.com/plicjo/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
-1. Fire up vim and install the plugins with `:PlugInstall`
-1. Make sure all the remote Neovim plugins are installed with `:UpdateRemotePlugins`
+3. Fire up vim and install the plugins with `:PlugInstall`
+4. Make sure all the remote Neovim plugins are installed with `:UpdateRemotePlugins`
