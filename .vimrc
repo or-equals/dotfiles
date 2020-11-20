@@ -372,13 +372,13 @@ let g:rg_command = '
   \ '
 
 " https://github.com/junegunn/fzf.vim/issues/419#issuecomment-479687537
-command! -bang -nargs=* Rg
-\ call fzf#vim#grep(
-\    g:rg_command
-\    . (len(<q-args>) > 0 ? shellescape(<q-args>) : '""'), 1,
-\ <bang>0 ? fzf#vim#with_preview('up:60%')
-\         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\ <bang>0)
+" command! -bang -nargs=* Rg
+" \ call fzf#vim#grep(
+" \    g:rg_command
+" \    . (len(<q-args>) > 0 ? shellescape(<q-args>) : '""'), 1,
+" \ <bang>0 ? fzf#vim#with_preview('up:60%')
+" \         : fzf#vim#with_preview('right:50%:hidden', '?'),
+" \ <bang>0)
 
 
 let g:rg_case_command = '
