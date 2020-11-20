@@ -1,6 +1,6 @@
-# Dotfiles
+# Or Equals Development Environment
 
-NeoVim with Tmux is the default development environment.
+NeoVim with Tmux is our default development environment.
 This configuration is optimized for Elixir/Ruby/Javascript development.
 
 ## Installations
@@ -11,14 +11,13 @@ This configuration is optimized for Elixir/Ruby/Javascript development.
 * [iTerm](https://www.iterm2.com/) for an improved terminal.
 
 ## Setup
-
 1. Install all of the tools above.
 
-2. Clone this repository and run the setup script.
-
+1. Clone this repository and run the setup script.
 ```
 git clone https://github.com/plicjo/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
-3. Fire up vim and install the plugins with `:PlugInstall`
+1. Fire up vim and install the plugins with `:PlugInstall`
+1. Make sure all the remote Neovim plugins are installed with `:UpdateRemotePlugins`
