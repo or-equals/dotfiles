@@ -173,7 +173,7 @@ Plug 'zxqfl/tabnine-vim'
 
 " Global Find and Replace
 Plug 'brooth/far.vim'
-let g:far#source = 'agnvim'
+let g:far#source = 'rgnvim'
 
 " Themes
 Plug 'w0ng/vim-hybrid'
