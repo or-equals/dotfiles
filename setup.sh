@@ -91,9 +91,8 @@ echo "Symlink or create your .zshrc.local file"
 #######################################################
 #
 # Final tidbits
-# Make a projects folder, an npm package for a pretty shell, and make sure Atom works on the command line
+# Make a projects folder, and install npm
 #
 #######################################################
 mkdir ~/projects
 npm install -g npm
-ln -s /Applications/Atom.app/Contents/Resources/app/atom.sh /usr/local/bin/atom
