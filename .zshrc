@@ -171,6 +171,8 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOPATH/bin
+# export PATH="./vendor/bundle/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # More info: https://github.com/git-duet/git-duet/#co-authored-by-trailer-support
 export GIT_DUET_CO_AUTHORED_BY=1
