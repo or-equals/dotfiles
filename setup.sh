@@ -91,8 +91,9 @@ echo "Symlink or create your .zshrc.local file"
 #######################################################
 #
 # Final tidbits
-# Make a projects folder, and install npm
+# Make a projects folder, and install npm and yarn
 #
 #######################################################
 mkdir ~/projects
 npm install -g npm
+curl -o- -L https://yarnpkg.com/install.sh | bash
