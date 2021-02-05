@@ -118,6 +118,7 @@ alias ll='ls -l'
 alias lsd='ls -ld *(-/DN)'
 alias md='mkdir -p'
 alias rd='rmdir'
+alias cdep='rm -rf deps _build assets/node_modules'
 
 # Git aliases
 #
