@@ -10,6 +10,7 @@ if [ ! $(which brew) ]; then
 fi
 
 brew bundle --verbose
+brew install --cask chromedriver
 
 #######################################################
 #
