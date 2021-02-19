@@ -119,6 +119,7 @@ alias lsd='ls -ld *(-/DN)'
 alias md='mkdir -p'
 alias rd='rmdir'
 alias cdep='rm -rf deps _build assets/node_modules'
+alias rdep='rm -rf deps _build assets/node_modules; mix deps.get; cd assets; npm install; cd ..'
 
 # Git aliases
 #
