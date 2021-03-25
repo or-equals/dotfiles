@@ -54,6 +54,7 @@ let g:lightline = {
       \ }
       \ }
 Plug 'juanibiapina/vim-lighttree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -169,7 +170,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 Plug 'tonchis/vim-to-github'
-Plug 'zxqfl/tabnine-vim'
+Plug 'codota/tabnine-vim'
 
 " Global Find and Replace
 Plug 'brooth/far.vim'

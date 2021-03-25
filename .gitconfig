@@ -4,7 +4,7 @@
   ui = true
 [core]
   excludesfile = ~/.ignore
-  editor = /usr/local/bin/nvim
+  editor = nvim
   whitespace = warn
 [help]
   autocorrect = 10

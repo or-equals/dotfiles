@@ -5,13 +5,12 @@
 # Homebrew install & application installation
 #
 #######################################################
-if [ ! $(which brew) ]; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --verbose
-brew install --cask chromedriver
-xattr -d com.apple.quarantine $(which chromedriver)
+# brew install --cask chromedriver
+# xattr -d com.apple.quarantine $(which chromedriver)
 
 #######################################################
 #
@@ -38,30 +37,28 @@ xcode-select --install
 asdf plugin-add erlang
 asdf plugin-add elixir
 asdf plugin-add ruby
-asdf plugin-add nodejs
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 asdf plugin-add python
 asdf plugin-update erlang
 asdf plugin-update elixir
+asdf plugin-update golang
 asdf plugin-update ruby
 asdf plugin-update nodejs
 asdf plugin-update python
 
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+asdf install nodejs ref:v14.16.0
+bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-previous-release-team-keyring'
 asdf install
 
 #######################################################
 #
-# neovim/python stuff for TabNine
-#
-#######################################################
-python -m pip install --upgrade pip pynvim
-
-#######################################################
-#
 # Install Vim-Plug for Vim Plugin Management
+# Install pynvim for Vim integration with Python
 #
 #######################################################
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+python -m pip install --upgrade pip pynvim
 
 #######################################################
 #
@@ -92,6 +89,7 @@ ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
 ln -sf "$(pwd)/.tool-versions" ~/.tool-versions
 ln -sf "$(pwd)/.vimrc" ~/.vimrc
 ln -sf "$(pwd)/.zshrc" ~/.zshrc
+ln -sf "$(pwd)/.zprofile" ~/.zprofile
 
 echo "Symlink or create your .zshrc.local file"
 

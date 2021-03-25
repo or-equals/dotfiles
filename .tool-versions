@@ -1,5 +1,5 @@
-elixir 1.11.2
-nodejs 14.15.2
-erlang 22.0.7
+elixir 1.11.4
+nodejs 14.16.0
 ruby 2.7.1
-python 3.9.0
+python 3.9.2
+golang 1.16

@@ -1,4 +1,4 @@
-. /usr/local/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/asdf.sh
 
 fpath=(
   $fpath
@@ -189,8 +189,9 @@ twiki () {
   bundle exec rails db:migrate && bundle exec rails db:migrate:redo && bundle exec rails db:test:prepare
 }
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/bin/zsh-z.plugin.zsh
 
 plugins=(… zsh-completions)
