@@ -1,4 +1,6 @@
-. /opt/homebrew/opt/asdf/asdf.sh
+export HOMEBREW_PREFIX=$(brew --prefix)
+
+. $HOMEBREW_PREFIX/opt/asdf/asdf.sh
 
 fpath=(
   $fpath
@@ -90,7 +92,7 @@ export PSQL_EDITOR='vim -c"setf sql"'
 # remove duplicates in $PATH
 typeset -aU path
 
-command -v brew > /dev/null && [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+command -v brew > /dev/null && [[ -s $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ]] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
 
 export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
@@ -167,31 +169,22 @@ alias dce="docker-compose exec"
 alias vi='nvim'
 alias vim='nvim'
 
-alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "\n\u2699  \e[33mZSH and VIM config reloaded\e[0m \u2699"'
+alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded99"'
 
-export PATH="/usr/local/opt/gettext/bin:$PATH"
-export GOPATH=$HOME/go
-export PATH=$HOME/bin:$PATH
-export PATH=$PATH:$GOPATH/bin
-# export PATH="./vendor/bundle/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# More info: https://github.com/git-duet/git-duet/#co-authored-by-trailer-support
-export GIT_DUET_CO_AUTHORED_BY=1
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
 export FZF_DEFAULT_COMMAND='fd --type f -E ~/.ignore'
 
 # Ruby/Rails functions
-#
 twiki () {
   bundle exec rails db:migrate && bundle exec rails db:migrate:redo && bundle exec rails db:test:prepare
 }
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/bin/zsh-z.plugin.zsh
 
 plugins=(… zsh-completions)
@@ -204,4 +197,3 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 eval "$(starship init zsh)"
-export PATH="/usr/local/sbin:$PATH"
