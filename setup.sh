@@ -10,6 +10,7 @@ if [ ! $(which brew) ]; then
 fi
 
 brew bundle --verbose
+brew tap homebrew/cask
 brew install --cask chromedriver
 xattr -d com.apple.quarantine $(which chromedriver)
 
