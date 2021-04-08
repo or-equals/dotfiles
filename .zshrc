@@ -171,6 +171,7 @@ alias vim='nvim'
 
 alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded99"'
 
+export PATH=$HOME/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Use fd as the searching tool for fzf
