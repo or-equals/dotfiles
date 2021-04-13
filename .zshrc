@@ -15,6 +15,11 @@ export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
 
+# Make things play nice with Ruby installs
+# Reference: https://or-equals-til.herokuapp.com/posts/mu6pubhqia-getting-ruby-installed-on-macs-with-the-apple-m1
+export RUBY_CONFIGURE_OPTS="--with-zlib-dir=/opt/homebrew/opt/zlib --with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline --with-libyaml-dir=/opt/homebrew/opt/libyaml"
+export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
+
 # Completion for kill-like commands
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
