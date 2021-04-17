@@ -74,8 +74,8 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 guibg=#002931
-Plug 'jgdavey/tslime.vim'
-Plug 'jgdavey/vim-turbux'
+Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
+Plug 'jgdavey/vim-turbux', { 'branch': 'main' }
 let g:turbux_runner  = 'tslime' " default: vimux OR tslime OR vim
 let g:turbux_command_rspec  = 'bundle exec rspec'
 let g:turbux_command_cucumber  = 'bundle exec cucumber'
