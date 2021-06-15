@@ -1,1 +1,4 @@
 gem: --no-document
+:gemdir:
+    - ~/.gem/ruby
+install: --user-install
