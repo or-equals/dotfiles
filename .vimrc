@@ -169,7 +169,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'dense-analysis/ale'
 Plug 'tonchis/vim-to-github'
-Plug 'zxqfl/tabnine-vim'
+Plug 'codota/tabnine-vim'
+Plug 'TovarishFin/vim-solidity'
 
 " Global Find and Replace
 Plug 'brooth/far.vim'
