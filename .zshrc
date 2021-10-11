@@ -200,3 +200,6 @@ zrcl="$HOME/.zshrc.local"
 
 eval "$(starship init zsh)"
 eval "$(rbenv init -)"
+
+export PNPM_HOME="/Users/joshuaplicque/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
