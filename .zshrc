@@ -170,6 +170,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded99"'
+alias cat='bat'
 
 export PATH=$HOME/bin:$PATH
 export PATH="$PATH:~/.gem/ruby/2.7.0/bin"
