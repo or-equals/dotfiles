@@ -209,3 +209,7 @@ eval "$(rbenv init -)"
 
 export PNPM_HOME="/Users/joshuaplicque/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+export KERL_CONFIGURE_OPTIONS="--with-ssl=/opt/homebrew/opt/openssl@1.1 \
+                               --with-wx-config=/opt/homebrew/opt/wxmac@3.1/bin/wx-config \
+                               --without-javac"
