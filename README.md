@@ -19,5 +19,15 @@ git clone https://github.com/plicjo/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
+3. Create a localized git config here `~/.gitconfig.local`
+Populate with the following:
+
+```
+[github]
+  user = YourUser
+[user]
+  email = your@email.com
+  name = FirstName Lastname
+```
 3. Fire up vim and install the plugins with `:PlugInstall`
 4. Make sure all the remote Neovim plugins are installed with `:UpdateRemotePlugins`

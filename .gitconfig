@@ -33,3 +33,5 @@
 	name = Joshua Plicque
 [rerere]
   enabled = true
+[include]
+	path = ~/.gitconfig.local

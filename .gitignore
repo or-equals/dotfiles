@@ -3,3 +3,4 @@ FILES
 .vim/.netrwhist
 Brewfile.lock.json
 .bundle/
+.gitconfig.local
