@@ -1,6 +1,7 @@
 export HOMEBREW_PREFIX=$(brew --prefix)
+export ASDF_DIR='/usr/local/opt/asdf/libexec'
 
-. $HOMEBREW_PREFIX/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/libexec/asdf.sh
 
 fpath=(
   $fpath
