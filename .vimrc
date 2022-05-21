@@ -12,6 +12,10 @@ vnoremap <SPACE> <Nop>
 "This unsets the "last search pattern" register by hitting return<Paste>
 nnoremap <CR> :noh<CR><CR>
 
+Plug 'dart-lang/dart-vim-plugin'
+let g:dart_format_on_save = 1
+let g:dartfmt_options = ['--fix', '--line-length 120']
+Plug 'thosakwe/vim-flutter'
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
