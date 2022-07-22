@@ -41,11 +41,13 @@ asdf plugin-add elixir
 asdf plugin-add ruby
 asdf plugin-add nodejs
 asdf plugin-add python
+asdf plugin-add golang
 asdf plugin-update erlang
 asdf plugin-update elixir
 asdf plugin-update ruby
 asdf plugin-update nodejs
 asdf plugin-update python
+asdf plugin-update golang
 
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
