@@ -1,5 +1,5 @@
 elixir 1.13.3
-nodejs 14.16.0
+nodejs 16.17.0
 ruby 2.7.1
 python 3.9.2
 golang 1.16
