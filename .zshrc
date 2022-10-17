@@ -19,6 +19,8 @@ export LESS=FRX
 # Reference: https://or-equals-til.herokuapp.com/posts/mu6pubhqia-getting-ruby-installed-on-macs-with-the-apple-m1
 export RUBY_CONFIGURE_OPTS="--with-zlib-dir=/opt/homebrew/opt/zlib --with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline --with-libyaml-dir=/opt/homebrew/opt/libyaml"
 export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include"
 
 # Completion for kill-like commands
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
