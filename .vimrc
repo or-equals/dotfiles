@@ -584,3 +584,8 @@ nnoremap Y y$
 " Replace old school ruby hashes with modern day syntax
 nnoremap hs :%s/:\([^ ]*\)\(\s*\)=>/\1:/g
 nnoremap hq :%s/\"\([^"]*\)\"/'\1'/g
+
+# Set elixir syntax for files
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
