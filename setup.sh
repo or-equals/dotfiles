@@ -41,12 +41,16 @@ asdf plugin-add ruby
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 asdf plugin-add python
+asdf plugin-add flutter
+asdf plugin-add dart https://github.com/patoconnor43/asdf-dart.git
 asdf plugin-update erlang
 asdf plugin-update elixir
 asdf plugin-update golang
 asdf plugin-update ruby
 asdf plugin-update nodejs
 asdf plugin-update python
+asdf plugin-update flutter
+asdf plugin-update dart
 
 asdf install nodejs ref:v14.16.0
 bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-previous-release-team-keyring'

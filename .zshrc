@@ -182,6 +182,7 @@ alias cat='bat'
 export PATH=$HOME/bin:$PATH
 export PATH="$PATH:~/.gem/ruby/2.7.0/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$(asdf where flutter)/bin":"$PATH"
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
