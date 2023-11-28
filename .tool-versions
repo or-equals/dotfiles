@@ -1,5 +1,5 @@
 elixir 1.15.4
 nodejs 20.10.0
-python 3.9.2
-golang 1.16
-flutter 3.16.0-stable
+python 3.11.0
+ruby 3.2.2
+flutter 3.16.1

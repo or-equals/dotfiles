@@ -15,7 +15,7 @@ This configuration is optimized for Elixir/Ruby/Javascript development.
 
 2. Clone this repository and run the setup script.
 ```
-git clone https://github.com/plicjo/dotfiles.git
+git clone https://github.com/or-equals/dotfiles.git
 cd dotfiles
 ./setup.sh
 ```
