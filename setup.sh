@@ -9,7 +9,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --verbose
-brew tap homebrew/cask
 brew install --cask chromedriver
 xattr -d com.apple.quarantine $(which chromedriver)
 
@@ -50,8 +49,6 @@ asdf plugin-update nodejs
 asdf plugin-update python
 asdf plugin-update flutter
 
-asdf install nodejs ref:v14.16.0
-bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-previous-release-team-keyring'
 asdf install
 
 #######################################################
@@ -72,6 +69,7 @@ ln -sf "$(pwd)/.bundle" ~/.bundle
 mkdir ~/.config
 mkdir ~/.config/nvim
 ln -sf "$(pwd)/.config/nvim/init.vim" ~/.config/nvim/init.vim
+ln -sf "$(pwd)/.config/starship.toml" ~/.config/starship.toml
 ln -sf "$(pwd)/.zsh/functions" ~/.zsh/functions
 mkdir ~/bin
 ln -sf "$(pwd)/bin"/* ~/bin/
