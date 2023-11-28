@@ -38,11 +38,13 @@ asdf plugin-add elixir
 asdf plugin-add erlang
 asdf plugin-add flutter
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add postgres
 asdf plugin-add python
 asdf plugin-add ruby
 asdf plugin-update elixir
 asdf plugin-update flutter
 asdf plugin-update nodejs
+asdf plugin-update postgres
 asdf plugin-update python
 asdf plugin-update ruby
 
