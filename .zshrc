@@ -180,7 +180,9 @@ alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded
 alias cat='bat'
 
 export PATH=$HOME/bin:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH:~/.gem/ruby/2.7.0/bin"
+export PATH="$PATH:~/.gem/ruby/3.2.0/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(asdf where flutter)/bin"
 
