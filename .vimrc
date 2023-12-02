@@ -13,9 +13,11 @@ vnoremap <SPACE> <Nop>
 nnoremap <CR> :noh<CR><CR>
 
 Plug 'dart-lang/dart-vim-plugin'
-let g:dart_format_on_save = 1
-let g:dartfmt_options = ['--fix', '--line-length 120']
 Plug 'thosakwe/vim-flutter'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+let g:dart_format_on_save = 0
+let g:dartfmt_options = ['--fix', '--line-length 120']
 " Use shortcuts gJ and gS to join and split, respectively
 Plug 'AndrewRadev/splitjoin.vim' " Convert between do/end and {}
 Plug 'airblade/vim-gitgutter'
