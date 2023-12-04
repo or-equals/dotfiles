@@ -217,4 +217,3 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 eval "$(starship init zsh)"
-eval "$(rbenv init -)"
