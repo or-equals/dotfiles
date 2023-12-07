@@ -15,13 +15,6 @@ export ZLS_COLORS=$LSCOLORS
 export LC_CTYPE=en_US.UTF-8
 export LESS=FRX
 
-# Make things play nice with Ruby installs
-# Reference: https://or-equals-til.herokuapp.com/posts/mu6pubhqia-getting-ruby-installed-on-macs-with-the-apple-m1
-export RUBY_CONFIGURE_OPTS="--with-zlib-dir=/opt/homebrew/opt/zlib --with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline --with-libyaml-dir=/opt/homebrew/opt/libyaml"
-export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include"
-
 # Completion for kill-like commands
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
@@ -100,8 +93,6 @@ export PSQL_EDITOR='vim -c"setf sql"'
 typeset -aU path
 
 command -v brew > /dev/null && [[ -s $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ]] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
-
-export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
 
 # Rails alises
 alias ss='bundle exec rails server'
@@ -205,9 +196,18 @@ plugins=(… zsh-completions)
 # Remember Elixir History
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export PNPM_HOME="/Users/joshuaplicque/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# Node Configuration
+export NODE_OPTIONS="--max-old-space-size=8192"
 
+# Ruby Configuration
+export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
+## Make things play nice with Ruby installs
+## Reference: https://or-equals-til.herokuapp.com/posts/mu6pubhqia-getting-ruby-installed-on-macs-with-the-apple-m1
+export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include"
+
+# Erlang Configuration
 export KERL_CONFIGURE_OPTIONS="--with-ssl=/opt/homebrew/opt/openssl@1.1 \
                                --with-wx-config=/opt/homebrew/opt/wxmac@3.1/bin/wx-config \
                                --without-javac"
