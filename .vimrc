@@ -84,8 +84,8 @@ highlight NormalFloat cterm=NONE ctermfg=14 ctermbg=0 gui=NONE guifg=#93a1a1 gui
 Plug 'jgdavey/tslime.vim', { 'branch': 'main' }
 Plug 'jgdavey/vim-turbux', { 'branch': 'main' }
 let g:turbux_runner  = 'tslime' " default: vimux OR tslime OR vim
-let g:turbux_command_rspec  = 'bundle exec rspec'
-let g:turbux_command_cucumber  = 'bundle exec cucumber'
+let g:turbux_command_rspec  = 'bin/rspec'
+let g:turbux_command_cucumber  = 'bin/cucumber'
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
