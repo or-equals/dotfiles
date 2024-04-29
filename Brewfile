@@ -1,6 +1,7 @@
 brew 'asdf'
 brew 'bat'
 brew 'coreutils'
+brew 'fd'
 brew 'fzf'
 brew 'gpg'
 brew 'imagemagick'
