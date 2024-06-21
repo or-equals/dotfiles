@@ -1,5 +1,6 @@
 elixir 1.15.4
+erlang 26.1.2
 nodejs 20.10.0
 python 3.11.0
-ruby 3.2.2
+ruby 3.3.2
 flutter 3.16.1
