@@ -199,14 +199,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Node Configuration
 export NODE_OPTIONS="--max-old-space-size=8192"
 
-# Ruby Configuration
-export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-jemalloc=/usr/local/opt/jemalloc"
-## Make things play nice with Ruby installs
-## Reference: https://or-equals-til.herokuapp.com/posts/mu6pubhqia-getting-ruby-installed-on-macs-with-the-apple-m1
-export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib -L$HOMEBREW_PREFIX/opt/jemalloc/lib -L$HOMEBREW_PREFIX/opt/llvm@15/lib"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/readline/include -I$HOMEBREW_PREFIX/opt/jemalloc/include -I$HOMEBREW_PREFIX/opt/llvm@15/include"
-
 # Prevent errors from the spring gem during Rails development
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
