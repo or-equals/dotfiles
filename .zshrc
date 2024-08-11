@@ -203,7 +203,7 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # Erlang Configuration
-export KERL_CONFIGURE_OPTIONS="--with-ssl=/opt/homebrew/opt/openssl@1.1 \
+export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl) \
                                --with-wx-config=/opt/homebrew/opt/wxmac@3.1/bin/wx-config \
                                --without-javac"
 
