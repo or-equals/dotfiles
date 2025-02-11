@@ -1,7 +1,5 @@
 export HOMEBREW_PREFIX=$(brew --prefix)
 
-. $(brew --prefix asdf)/libexec/asdf.sh
-
 fpath=(
   $fpath
   ~/.zsh/functions
@@ -171,6 +169,7 @@ alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded
 alias cat='bat'
 
 export PATH=$HOME/bin:$PATH
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH:~/.gem/ruby/2.7.0/bin"
 export PATH="$PATH:~/.gem/ruby/3.2.0/bin"
