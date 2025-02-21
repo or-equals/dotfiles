@@ -96,7 +96,7 @@ command -v brew > /dev/null && [[ -s $HOMEBREW_PREFIX/etc/profile.d/autojump.sh 
 alias ss='bundle exec rails server'
 alias be="bundle exec"
 alias fr='forego run'
-alias resetdb="bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails db:seed"
+alias rdb="bin/rails db:drop db:create db:migrate && bin/rails db:seed"
 alias groutes='groutes() { bundle exec rails routes | grep $1 }; groutes'
 alias sc='bundle exec rails console'
 
