@@ -181,9 +181,6 @@ And much more—just check out the `.zshrc` for details!
 
 - **[slim-template/vim-slim](https://github.com/slim-template/vim-slim)** – Syntax highlight for [Slim templates](http://slim-lang.com/).
 
-- **[terryma/vim-expand-region](https://github.com/terryma/vim-expand-region)**
-  - Press `v` multiple times to expand selection, `<leader>v` to shrink.
-
 - **[maxbrunsfeld/vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack)** – Keeps a stack of past yanks, so you can cycle them.
   - Use `⌥+P` (option+P) or `shift+option+P` to cycle.
 

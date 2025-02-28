@@ -154,10 +154,6 @@ Plug 'sjl/gundo.vim'
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
 Plug 'slashmili/alchemist.vim'
-" Press `v` multiple times to expand the selected region in visual mode
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <leader>v <Plug>(expand_region_shrink)
 Plug 'thoughtbot/vim-rspec'
 Plug 'ervandew/supertab'
 Plug 'jgdavey/vim-blockle'
