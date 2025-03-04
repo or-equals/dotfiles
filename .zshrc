@@ -100,6 +100,7 @@ alias rdb="bin/rails db:drop db:create db:migrate && bin/rails db:seed"
 alias zdb="bin/rails db:drop db:create db:migrate && bin/rails db:seed && bin/rake after_party:run"
 alias groutes='groutes() { bundle exec rails routes | grep $1 }; groutes'
 alias sc='bundle exec rails console'
+alias claude='npx @anthropic-ai/claude-code'
 
 # Phoenix aliases
 alias im='iex -S mix'
