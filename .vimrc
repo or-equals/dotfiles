@@ -59,7 +59,7 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \ }
       \ }
-Plug 'juanibiapina/vim-lighttree'
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_OPTS='--layout=reverse'
@@ -360,8 +360,45 @@ noremap // :noh<cr>
 " <Space> q to quit everything, even NERDTree
 noremap <leader>q :wqa<cr>
 
-" LightTree is an in-window file explorer
-map <leader>e :LightTree<cr>
+" Start nerdtree
+map <leader>e :NERDTree<cr>
+
+" Prevent NERDTree from changing cwd implicitly
+let g:NERDTreeChDirMode = 0
+
+" Open NERDTree automatically when Vim starts with a file
+autocmd VimEnter * if argc() > 0 | NERDTree | wincmd p | endif
+
+" Sync NERDTree to the current file and collapse other folders
+autocmd BufEnter * if bufname('%') !~ 'NERD_tree' && bufname('%') != '' | call s:NERDTreeSyncAndCollapse() | endif
+
+function! s:NERDTreeSyncAndCollapse() abort
+  " Check if the current buffer is valid and not a special buffer
+  let l:current_file = expand('%:p')
+  if empty(l:current_file) || &buftype != '' || !filereadable(l:current_file)
+    return
+  endif
+
+  " Open NERDTree if it’s not already open
+  if !exists('t:NERDTreeBufName') || bufwinnr(t:NERDTreeBufName) == -1
+    silent! NERDTree
+  endif
+
+  " Focus NERDTree
+  execute 'NERDTreeFocus'
+
+  " Collapse all directories
+  silent! normal! zM
+
+  " Refresh NERDTree to ensure the tree is up-to-date
+  silent! NERDTreeRefresh
+
+  " Reveal the current file
+  execute 'NERDTreeFind ' . l:current_file
+
+  " Return focus to the original window
+  wincmd p
+endfunction
 
 " bind F to ripgrep word under cursor
 nnoremap K :Find <cr>
@@ -376,16 +413,6 @@ let g:rg_command = '
   \ -g "!spec/vcr/*"
   \ '
 
-" https://github.com/junegunn/fzf.vim/issues/419#issuecomment-479687537
-" command! -bang -nargs=* Rg
-" \ call fzf#vim#grep(
-" \    g:rg_command
-" \    . (len(<q-args>) > 0 ? shellescape(<q-args>) : '""'), 1,
-" \ <bang>0 ? fzf#vim#with_preview('up:60%')
-" \         : fzf#vim#with_preview('right:50%:hidden', '?'),
-" \ <bang>0)
-
-
 let g:rg_case_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore --ignore-global --hidden --no-follow --color "always"
   \ -g "!.git/*"
@@ -394,24 +421,22 @@ let g:rg_case_command = '
   \ '
 
 command! -bang -nargs=* Rgg
-\ call fzf#vim#grep(
-\    g:rg_case_command
-\    . shellescape(<q-args>), 1,
-\ <bang>0 ? fzf#vim#with_preview('up:60%')
-\         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\ <bang>0)
+  \ call fzf#vim#grep(
+  \    g:rg_case_command
+  \    . shellescape(<q-args>), 1,
+  \    <bang>0 ? fzf#vim#with_preview('up:60%')
+  \            : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \    <bang>0)
 
 " Use a preview window with the Files command
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" This command is used with a shortcut key below to find all occurences of the
-" word beneath the cursor
 command! -bang -nargs=* Find
-\ call fzf#vim#grep(g:rg_command .shellescape(expand('<cword>')), 1,
-\ <bang>0 ? fzf#vim#with_preview('up:60%')
-\         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\ <bang>0)
+  \ call fzf#vim#grep(g:rg_command . shellescape(expand('<cword>')), 1,
+  \    <bang>0 ? fzf#vim#with_preview('up:60%')
+  \            : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \    <bang>0)
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
