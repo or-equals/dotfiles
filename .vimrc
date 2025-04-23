@@ -367,10 +367,10 @@ map <leader>e :NERDTree<cr>
 let g:NERDTreeChDirMode = 0
 
 " Open NERDTree automatically when Vim starts with a file
-autocmd VimEnter * if argc() > 0 | NERDTree | wincmd p | endif
+" autocmd VimEnter * if argc() > 0 | NERDTree | wincmd p | endif
 
 " Sync NERDTree to the current file and collapse other folders
-autocmd BufEnter * if bufname('%') !~ 'NERD_tree' && bufname('%') != '' | call s:NERDTreeSyncAndCollapse() | endif
+" autocmd BufEnter * if bufname('%') !~ 'NERD_tree' && bufname('%') != '' | call s:NERDTreeSyncAndCollapse() | endif
 
 function! s:NERDTreeSyncAndCollapse() abort
   " Check if the current buffer is valid and not a special buffer
