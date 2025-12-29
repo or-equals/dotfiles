@@ -100,7 +100,6 @@ alias rdb="bin/rails db:drop db:create db:migrate && bin/rails db:seed"
 alias zdb="bin/rails db:drop db:create db:migrate && bin/rails db:seed && bin/rake after_party:run"
 alias groutes='groutes() { bundle exec rails routes | grep $1 }; groutes'
 alias sc='bundle exec rails console'
-alias claude='npx @anthropic-ai/claude-code'
 
 # Phoenix aliases
 alias im='iex -S mix'
@@ -178,6 +177,8 @@ export PATH="$PATH:~/.gem/ruby/3.2.0/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(asdf where flutter)/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
