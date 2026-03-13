@@ -154,7 +154,6 @@ Plug 'sjl/gundo.vim'
 nnoremap <leader>u :GundoToggle<cr>
 let g:gundo_prefer_python3 = 1
 Plug 'slashmili/alchemist.vim'
-Plug 'thoughtbot/vim-rspec'
 Plug 'ervandew/supertab'
 Plug 'jgdavey/vim-blockle'
 Plug 'tpope/vim-commentary'

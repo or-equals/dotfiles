@@ -182,7 +182,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
-export FZF_DEFAULT_COMMAND='fd --type f -E ~/.ignore'
+export FZF_DEFAULT_COMMAND='fd --type f -E ~/.ignore | sort'
 
 # Ruby/Rails functions
 twiki () {
@@ -215,3 +215,4 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 eval "$(starship init zsh)"
+export PATH="$HOME/.local/bin:$PATH"
