@@ -179,6 +179,7 @@ export PATH="$PATH:$(asdf where flutter)/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Use fd as the searching tool for fzf
 alias fd='fd -E ~/.ignore'
@@ -215,4 +216,3 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 eval "$(starship init zsh)"
-export PATH="$HOME/.local/bin:$PATH"
