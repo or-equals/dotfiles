@@ -211,6 +211,10 @@ export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl) \
                                --with-wx-config=/opt/homebrew/opt/wxmac@3.1/bin/wx-config \
                                --without-javac"
 
+# Ruby Configuration
+# makes the warning: literal string will be frozen in the future go away
+export RUBYPOT=W0
+
 # Import local zsh customizations, if present
 zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
