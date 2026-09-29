@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# Restore a Postgres dump into the current Rails project's database.
+#
+# Usage: restore-db-backup [backup_id | path/to/file.dump]
+#
+# Run from the root of a Rails project. The database name, host, port,
+# username and password are read from config/database.yml for RAILS_ENV
+# (default: development). A backup ID like "b001" resolves to
+# backup_b001.dump in the current directory.
+
+set -euo pipefail
+
+RAILS_ENV="${RAILS_ENV:-development}"
+
+if [ ! -f config/database.yml ]; then
+  echo "config/database.yml not found. Run this from the root of a Rails project."
+  exit 1
+fi
+
+if [ "$RAILS_ENV" = "production" ]; then
+  echo "Refusing to restore into production."
+  exit 1
+fi
+
+backup="${1:-}"
+if [ -z "$backup" ]; then
+  echo "Enter the Backup ID (e.g., b001):"
+  read -r backup
+fi
+
+if [ -f "$backup" ]; then
+  backup_file="$backup"
+else
+  backup_file="backup_${backup}.dump"
+fi
+
+if [ ! -f "$backup_file" ]; then
+  echo "Backup can't be found: $backup_file"
+  exit 1
+fi
+
+# Evaluate the ERB in database.yml and pull out the connection settings for
+# RAILS_ENV. Handles both single-database configs and multi-database configs
+# (uses "primary", or the first entry if there is no primary).
+db_config=$(RAILS_ENV="$RAILS_ENV" ruby -ryaml -rerb -e '
+  env = ENV.fetch("RAILS_ENV")
+  yaml = ERB.new(File.read("config/database.yml")).result
+  config = YAML.safe_load(yaml, aliases: true)[env]
+  abort "No #{env} section in config/database.yml" unless config.is_a?(Hash)
+  unless config.key?("database")
+    config = config["primary"] || config.values.find { |v| v.is_a?(Hash) }
+  end
+  abort "No database name for #{env} in config/database.yml" unless config && config["database"]
+  puts %w[database host port username password].map { |k| config[k].to_s }.join("\x1f")
+')
+
+IFS=$'\x1f' read -r db_name db_host db_port db_user db_password <<< "$db_config"
+
+pg_args=(-h "${db_host:-localhost}")
+[ -n "$db_port" ] && pg_args+=(-p "$db_port")
+[ -n "$db_user" ] && pg_args+=(-U "$db_user")
+[ -n "$db_password" ] && export PGPASSWORD="$db_password"
+
+echo "Restoring $backup_file into $db_name ($RAILS_ENV)."
+
+# Drop and recreate the database
+echo "Dropping and recreating the database..."
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:drop db:create
+
+# Restore the backup to the database
+echo "Restoring backup to the database..."
+pg_restore --verbose --clean --no-acl --no-owner "${pg_args[@]}" -d "$db_name" "$backup_file"

@@ -13,3 +13,5 @@ deps
 priv/templates
 /_build
 assets/node_modules
+
+**/.claude/settings.local.json
