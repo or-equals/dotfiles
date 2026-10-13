@@ -168,6 +168,9 @@ alias vim='nvim'
 
 alias rl='source ~/.zshrc; source ~/.vimrc; echo -e "ZSH and VIM config reloaded99"'
 alias cat='bat'
+alias cf='claude --plugin-dir ~/projects/factory'
+alias cfw='CLAUDE_CONFIG_DIR=~/.claude FACTORY_GROK_SEAT= claude --plugin-dir ~/projects/factory'
+alias cfp='CLAUDE_CONFIG_DIR=~/.claude-personal FACTORY_GROK_SEAT=1 claude --plugin-dir ~/projects/factory'
 
 export PATH=$HOME/bin:$PATH
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
@@ -220,3 +223,9 @@ zrcl="$HOME/.zshrc.local"
 [[ ! -a $zrcl ]] || source $zrcl
 
 eval "$(starship init zsh)"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
