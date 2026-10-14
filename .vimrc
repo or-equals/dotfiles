@@ -33,14 +33,9 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'kana/vim-textobj-user'
 Plug 'andyl/vim-textobj-elixir'
 Plug 'elzr/vim-json'
-Plug 'slim-template/vim-slim'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-projectionist'
-Plug 'kchmck/vim-coffee-script'
 Plug 'AndrewRadev/ember_tools.vim'
 Plug 'joukevandermaas/vim-ember-hbs'
-" Jade/Pug Templates
-Plug 'digitaltoad/vim-pug'
 Plug 'godlygeek/tabular' " Align text
 nmap <Leader>t= :Tabularize /=<cr>
 vmap <Leader>t= :Tabularize /=<cr>
@@ -89,45 +84,6 @@ let g:turbux_command_cucumber  = 'bin/cucumber'
 " Browse git history with :GV
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'majutsushi/tagbar' " https://github.com/majutsushi/tagbar
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_ctags_bin = 'ctags'
-nmap <end> :TagbarToggle<cr>
-let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:tests'
-    \ ]
-    \ }
-
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'F:singleton methods',
-        \ 'f:methods',
-        \ 'a:aliases',
-        \ 's:symbols',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'i:its',
-        \ '?:unknown',
-    \ ],
-    \ 'kind2scope': { 'c' : 'class', 'm': 'class' },
-    \ 'scope2kind': { 'class' : 'c' },
-        \ }
 Plug 'matze/vim-move' " Use modifier+j or modifier+k to move a line or selected lines
 " On ergodox, this allows the left ctrl key to work as the move key
 let g:move_key_modifier = 'C'
@@ -137,7 +93,6 @@ Plug 'mechatroner/rainbow_csv', { 'for': 'csv' }
 Plug 'mhinz/vim-startify' " Always update session on vim close
 let g:startify_session_persistence = 1
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
-Plug 'tpope/vim-cucumber'
 Plug 'hashrocket/vim-hashrocket'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['csv']

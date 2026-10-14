@@ -4,3 +4,4 @@ FILES
 Brewfile.lock.json
 .bundle/
 .gitconfig.local
+.claude/settings.local.json
