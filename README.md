@@ -51,21 +51,9 @@ Follow these steps to configure your development environment:
 
    You can add additional Git configurations to this file as needed.
 
-4. **Install Vim plugins:**
+4. **Follow the list at the end of setup.**
 
-   Open NeoVim by typing `nvim` in your terminal, then run the following command to install plugins defined in `.vimrc`:
-
-   ```
-   :PlugInstall
-   ```
-
-5. **Update remote NeoVim plugins:**
-
-   Ensure all remote plugins are installed by running the following command in NeoVim:
-
-   ```
-   :UpdateRemotePlugins
-   ```
+   Setup installs your Vim plugins itself, then lists only what's left for you, like signing in to Claude Code and grok.
 
 ---
 
@@ -173,7 +161,7 @@ And much more—just check out the `.zshrc` for details!
   - `:Rg` / `:Rgg` – Searches with `ripgrep`, displayed in an fzf preview window.
   - `:Find` – Searches for the word under cursor in the project using `ripgrep`.
 
-- **[vim-plug](https://github.com/junegunn/vim-plug)** – Plugin manager. Install by running `:PlugInstall` from within Neovim.
+- **[vim-plug](https://github.com/junegunn/vim-plug)** – Plugin manager. `setup.sh` installs plugins; run `:PlugInstall` after adding new ones.
 
 - **[tpope/vim-rails](https://github.com/tpope/vim-rails)**, [vim-bundler](https://github.com/tpope/vim-bundler), [vim-rake](https://github.com/tpope/vim-rake)** – Powerful Ruby & Rails enhancements.
 
@@ -245,7 +233,7 @@ And many more convenience or alignment commands (see `.vimrc` comments for speci
 ### Final Tips
 
 1. **Install Vim Plugins**:
-   - Launch `nvim`, run `:PlugInstall` to install all the plugins from `.vimrc`.
+   - `setup.sh` installs all the plugins from `.vimrc`. Run `:PlugInstall` in `nvim` after adding new ones.
 
 2. **`setup.sh`** does a lot:
    - Installs Homebrew (if not installed).
