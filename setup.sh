@@ -173,6 +173,14 @@ then
     "           user = your-github-username${reset}"
 fi
 
+ls ~/.ssh/id_* >/dev/null 2>&1 ||
+  todo "Copy your SSH keys into ${bold}~/.ssh${reset} (from 1Password or your old Mac)"
+
+/opt/homebrew/bin/gh auth status >/dev/null 2>&1 ||
+  todo "Sign in to GitHub: run ${bold}gh auth login${reset}"
+grep -q 'api.heroku.com' ~/.netrc 2>/dev/null ||
+  todo "Sign in to Heroku: run ${bold}heroku login${reset}"
+
 ~/.local/bin/claude auth status 2>/dev/null | grep -q '"loggedIn": true' ||
   todo "Sign in to Claude Code: run ${bold}claude${reset}"
 grep -q 'auth.x.ai' ~/.grok/auth.json 2>/dev/null ||

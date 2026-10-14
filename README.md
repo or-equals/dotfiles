@@ -7,11 +7,12 @@ This configuration is optimized for Elixir, Ruby, and JavaScript development.
 
 ## Installations
 
-The following tools are required to set up the development environment:
+`setup.sh` installs everything in the `Brewfile`, including these apps: 1Password, Android Studio, Docker Desktop, Google Chrome, iTerm, Postgres.app, and Slack.
 
-- [1Password](https://1password.com) - Password management tool.
-- [Dash](https://kapeli.com/dash) - Quickly access documentation for various languages and frameworks.
-- [iTerm](https://www.iterm2.com/) - Enhanced terminal emulator for a better command-line experience.
+Install these yourself:
+
+- [Xcode](https://apps.apple.com/app/xcode/id497799835) from the App Store, for iOS builds.
+- [Dash](https://kapeli.com/dash) (optional), for quick access to documentation.
 
 ---
 
@@ -19,7 +20,7 @@ The following tools are required to set up the development environment:
 
 Follow these steps to configure your development environment:
 
-1. **Install the tools listed in the Installations section above.**
+1. **Install Xcode from the App Store** (see Installations above).
 
 2. **Clone this repository and run the setup script:**
 
@@ -55,7 +56,7 @@ Follow these steps to configure your development environment:
 
 4. **Follow the list at the end of setup.**
 
-   Setup installs your Vim plugins itself, then lists only what's left for you: creating `~/.gitconfig.local` if git doesn't know who you are yet, and signing in to Claude Code and grok.
+   Setup installs your Vim plugins itself, then lists only what's left for you: creating `~/.gitconfig.local` if git doesn't know who you are yet, copying your SSH keys, and signing in to GitHub, Heroku, Claude Code, and grok.
 
 ---
 
