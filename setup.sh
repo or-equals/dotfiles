@@ -9,8 +9,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew bundle --verbose
-brew install --cask chromedriver
-xattr -d com.apple.quarantine $(which chromedriver)
 
 #######################################################
 #
