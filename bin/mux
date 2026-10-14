@@ -61,6 +61,7 @@ if ! $(tmux has-session -t $name &>/dev/null); then
   tmux new -s $name -n code -d -x${cols-150} -y50
   tmux split-window -h -t $name
   tmux new-window -a -d -n server -t $name:0
+  tmux new-window -a -d -n agent -t $name:1
   tmux select-layout -t $name main-vertical &>/dev/null \;
   tmux send-keys -t $name:0.1 'vim .' C-m
   tmux send-keys -t $name:0.0 'clear' C-m
