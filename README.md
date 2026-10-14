@@ -38,7 +38,7 @@ Follow these steps to configure your development environment:
    - Install Claude Code and grok, and clone the factory plugin into `~/projects/factory`.
    - Keep going if a step fails, then list every failed step at the end.
 
-   It's safe to re-run: steps that are already done are skipped.
+   It's safe to re-run: steps that are already done are skipped. Apps you installed yourself before running it are left alone, since macOS won't let Homebrew take them over without extra permission.
 
 3. **Create a localized Git configuration:**
 

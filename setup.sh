@@ -46,6 +46,26 @@ run_installer() {
 section "Homebrew"
 [ -x /opt/homebrew/bin/brew ] || step "Install Homebrew" run_installer https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# Prints Brewfile casks whose app is already in /Applications but wasn't
+# installed by Homebrew. Taking those over needs macOS App Management
+# permission, so leave them alone.
+hand_installed_casks() {
+  casks=$(sed -n "s/^cask '\(.*\)'$/\1/p" "$dotfiles/Brewfile")
+  [ -n "$casks" ] || return 0
+  brew info --cask --json=v2 $casks | /usr/bin/python3 -c '
+import json, os, subprocess, sys
+managed = set(subprocess.run(["brew", "list", "--cask"], capture_output=True, text=True).stdout.split())
+for cask in json.load(sys.stdin)["casks"]:
+    apps = [artifact["app"][0] for artifact in cask["artifacts"] if "app" in artifact]
+    if cask["token"] not in managed and any(os.path.exists("/Applications/" + app) for app in apps):
+        print(cask["token"])
+'
+}
+
+HOMEBREW_BUNDLE_CASK_SKIP=$(hand_installed_casks | tr '\n' ' ')
+export HOMEBREW_BUNDLE_CASK_SKIP
+[ -n "$HOMEBREW_BUNDLE_CASK_SKIP" ] &&
+  printf '  %s→ Skipping apps you installed yourself: %s%s\n' "$dim" "$HOMEBREW_BUNDLE_CASK_SKIP" "$reset"
 step "Install Brewfile packages" brew bundle --file="$dotfiles/Brewfile"
 
 case "$SHELL" in
