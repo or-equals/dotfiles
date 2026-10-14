@@ -157,7 +157,7 @@ Below is an overview of many of the aliases, custom functions, and helpful featu
 - **`cat`** – Actually calls `bat`, for a colorized `cat` replacement.
 - **`cd..`** – Same as `..`, moves up one directory.
 - **`fd`** – [fd](https://github.com/sharkdp/fd) installed as an alternative to `find`.
-- The environment sets a few paths for asdf, yarn, cargo (Rust), etc.
+- The environment sets a few paths for asdf, cargo (Rust), etc.
 
 And much more—just check out the `.zshrc` for details!
 </details>
