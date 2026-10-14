@@ -1,119 +1,137 @@
 #!/usr/bin/env sh
 
 setup_started_at=$(date +%s)
+dotfiles=$(cd "$(dirname "$0")" && pwd)
+failed_steps=""
+
+esc=$(printf '\033')
+reset="${esc}[0m"
+bold="${esc}[1m"
+dim="${esc}[2m"
+red="${esc}[1;31m"
+green="${esc}[1;32m"
+yellow="${esc}[1;33m"
+blue="${esc}[1;34m"
+
+# Prints a section header
+section() {
+  printf '\n%s==>%s %s%s%s\n' "$blue" "$reset" "$bold" "$1" "$reset"
+}
+
+# Runs a command, recording its label if it fails so setup keeps going
+step() {
+  label=$1
+  shift
+  printf '  %s→ %s%s\n' "$dim" "$label" "$reset"
+  if "$@"; then
+    printf '  %s✔%s %s\n' "$green" "$reset" "$label"
+  else
+    printf '  %s✘ %s failed%s\n' "$red" "$label" "$reset"
+    failed_steps="${failed_steps}${label}
+"
+  fi
+}
+
+# Downloads an install script before running it, so a failed download counts as a failure
+run_installer() {
+  installer=$(curl -fsSL "$1") || return
+  /bin/bash -c "$installer"
+}
 
 #######################################################
 #
-# Homebrew install & application installation
+# Homebrew & packages
 #
 #######################################################
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+section "Homebrew"
+[ -x /opt/homebrew/bin/brew ] || step "Install Homebrew" run_installer https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
+step "Install Brewfile packages" brew bundle --file="$dotfiles/Brewfile"
 
-brew bundle --verbose
+case "$SHELL" in
+  */zsh) ;;
+  *) step "Make zsh the default shell" chsh -s /bin/zsh ;;
+esac
 
 #######################################################
 #
-# zsh as the default shell
+# Languages via asdf
 #
 #######################################################
-echo $SHELL | grep -v zsh | while read
+section "Languages"
+for plugin in elixir erlang flutter nodejs postgres python ruby rust
 do
-  chsh -s /usr/local/bin/zsh
+  step "asdf plugin $plugin" sh -c "asdf plugin add $plugin && asdf plugin update $plugin"
 done
 
-#######################################################
-#
-# Xcode & cli tools
-#
-#######################################################
-xcode-select --install
+# Build Erlang against Homebrew's OpenSSL; kerl can't find it on its own
+export KERL_CONFIGURE_OPTIONS="--with-ssl=$HOMEBREW_PREFIX/opt/openssl@3 --without-javac"
+step "Install .tool-versions" sh -c "cd '$dotfiles' && asdf install"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+step "Upgrade npm" npm install -g npm
 
 #######################################################
 #
-# asdf for programming language version management
+# Neovim
 #
 #######################################################
-asdf plugin add elixir
-asdf plugin add erlang
-asdf plugin add flutter
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin add postgres
-asdf plugin add python
-asdf plugin add ruby
-asdf plugin add rust
-asdf plugin update elixir
-asdf plugin update flutter
-asdf plugin update nodejs
-asdf plugin update postgres
-asdf plugin update python
-asdf plugin update ruby
-asdf plugin update rust
-
-asdf install
+section "Neovim"
+step "Install vim-plug" curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+step "Install pynvim" python -m pip install --quiet --upgrade pip pynvim
 
 #######################################################
 #
-# Install Vim-Plug for Vim Plugin Management
-# Install pynvim for Vim integration with Python
+# Symlink dotfiles into ~
 #
 #######################################################
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-python -m pip install --upgrade pip pynvim
+section "Dotfiles"
+mkdir -p ~/.config/nvim ~/.zsh ~/bin ~/projects
+
+ln -sfn "$dotfiles/.bundle" ~/.bundle
+ln -sfn "$dotfiles/.zsh/functions" ~/.zsh/functions
+ln -sf "$dotfiles/.config/nvim/init.vim" ~/.config/nvim/init.vim
+ln -sf "$dotfiles/.config/starship.toml" ~/.config/starship.toml
+ln -sf "$dotfiles/bin"/* ~/bin/
+
+for file in .asdfrc .clippy.rb .default-gems .gemrc .gitconfig .gitignore \
+  .ignore .irbrc .pryrc .railsrc .rspec .rubocop.yml .tmux.conf .tool-versions \
+  .vimrc .zprofile .zshrc
+do
+  ln -sf "$dotfiles/$file" ~/"$file"
+done
+printf '  %s✔%s Linked into %s\n' "$green" "$reset" "$HOME"
 
 #######################################################
 #
-# Symlink all my files/folders
+# Coding agents
 #
 #######################################################
-ln -sf "$(pwd)/.bundle" ~/.bundle
-mkdir ~/.config
-mkdir ~/.config/nvim
-ln -sf "$(pwd)/.config/nvim/init.vim" ~/.config/nvim/init.vim
-ln -sf "$(pwd)/.config/starship.toml" ~/.config/starship.toml
-ln -sf "$(pwd)/.zsh/functions" ~/.zsh/functions
-mkdir ~/bin
-ln -sf "$(pwd)/bin"/* ~/bin/
-ln -sf "$(pwd)/.asdfrc" ~/.asdfrc
-ln -sf "$(pwd)/.clippy.rb" ~/.clippy.rb
-ln -sf "$(pwd)/.ctags" ~/.ctags
-ln -sf "$(pwd)/.default-gems" ~/.default-gems
-ln -sf "$(pwd)/.gemrc" ~/.gemrc
-ln -sf "$(pwd)/.gitconfig" ~/.gitconfig
-ln -sf "$(pwd)/.gitignore" ~/.gitignore
-ln -sf "$(pwd)/.ignore" ~/.ignore
-ln -sf "$(pwd)/.irbrc" ~/.irbrc
-ln -sf "$(pwd)/.pryrc" ~/.pryrc
-ln -sf "$(pwd)/.railsrc" ~/.railsrc
-ln -sf "$(pwd)/.rspec" ~/.rspec
-ln -sf "$(pwd)/.rubocop.yml" ~/.rubocop.yml
-ln -sf "$(pwd)/.tmux.conf" ~/.tmux.conf
-ln -sf "$(pwd)/.tool-versions" ~/.tool-versions
-ln -sf "$(pwd)/.vimrc" ~/.vimrc
-ln -sf "$(pwd)/.zshrc" ~/.zshrc
-ln -sf "$(pwd)/.zprofile" ~/.zprofile
+section "Coding agents"
+[ -x ~/.local/bin/claude ] || step "Install Claude Code" run_installer https://claude.ai/install.sh
+[ -x ~/.grok/bin/grok ] || step "Install grok" run_installer https://x.ai/cli/install.sh
 
-echo "Symlink or create your .zshrc.local file"
-
-#######################################################
-#
-# Final tidbits
-# Make a projects folder, and install npm
-#
-#######################################################
-mkdir ~/projects
-npm install -g npm
+factory=~/projects/factory
+[ -d "$factory" ] || step "Clone factory plugin" git clone https://github.com/plicjo/factory.git "$factory"
+~/.grok/bin/grok plugin list 2>/dev/null | grep -q "local: $factory\]" ||
+  step "Install factory plugin into grok" ~/.grok/bin/grok plugin install "$factory" --trust
 
 #######################################################
 #
 # Victory lap
 #
 #######################################################
-esc=$(printf '\033')
-reset="${esc}[0m"
-bold="${esc}[1m"
-green="${esc}[1;32m"
-dim="${esc}[2m"
+elapsed=$(( $(date +%s) - setup_started_at ))
+duration="${dim}in $((elapsed / 60))m $((elapsed % 60))s${reset}"
+
+if [ -n "$failed_steps" ]; then
+  printf '\n  %s⚠ Setup finished with failures%s %s\n' "$yellow" "$reset" "$duration"
+  printf '%s' "$failed_steps" | while IFS= read -r label
+  do
+    printf '    - %s\n' "$label"
+  done
+  printf '  %s→ Scroll up for the errors, fix them, and re-run ./setup.sh.%s\n\n' "$bold" "$reset"
+  exit 1
+fi
 
 echo
 color=46
@@ -130,6 +148,9 @@ done <<'BANNER'
   ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
 BANNER
 
-elapsed=$(( $(date +%s) - setup_started_at ))
-printf '\n  %s✔ Machine setup complete%s %sin %dm %ds%s\n' "$green" "$reset" "$dim" $((elapsed / 60)) $((elapsed % 60)) "$reset"
-printf '  %s→ Open a new terminal and go build something.%s\n\n' "$bold" "$reset"
+printf '\n  %s✔ Machine setup complete%s %s\n\n' "$green" "$reset" "$duration"
+printf '  %sA few things only you can do:%s\n' "$bold" "$reset"
+printf '    1. Open a new terminal\n'
+printf '    2. Create ~/.gitconfig.local and ~/.zshrc.local (see README)\n'
+printf '    3. Sign in: run %sclaude%s, then %sgrok%s\n' "$bold" "$reset" "$bold" "$reset"
+printf '    4. In nvim, run %s:PlugInstall%s then %s:UpdateRemotePlugins%s\n\n' "$bold" "$reset" "$bold" "$reset"

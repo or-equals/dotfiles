@@ -1,7 +1,7 @@
 elixir 1.19.4
 erlang 28.1.1
-nodejs 20.10.0
-python 3.11.0
+nodejs 24.21.0
+python 3.14.8
 ruby 3.3.2
-flutter 3.16.1
+flutter 3.32.8-stable
 rust 1.84.1
