@@ -29,6 +29,8 @@ Follow these steps to configure your development environment:
    ./setup.sh
    ```
 
+   On a brand-new Mac, `git clone` first asks to install Apple's Command Line Tools. Accept, wait for it to finish, then run the clone again.
+
    The setup script will:
    - Install necessary tools (e.g., NeoVim, Tmux, asdf, plugins).
    - Symlink configuration files to your home directory.
@@ -49,7 +51,7 @@ Follow these steps to configure your development environment:
      name = FirstName LastName
    ```
 
-   You can add additional Git configurations to this file as needed.
+   This step is required: the shared `.gitconfig` has no name or email, so git won't commit until this file exists. Setup reminds you if it's missing. You can add other Git settings here too.
 
 4. **Follow the list at the end of setup.**
 
@@ -58,8 +60,6 @@ Follow these steps to configure your development environment:
 ---
 
 ## Features
-
-This configuration provides a rich set of features to enhance your development workflow. Below is a summary of the key features, with links to configuration files for more details:
 
 Below is an overview of many of the aliases, custom functions, and helpful features that come from these dotfiles. Think of this as a quick reference for the “goodies” provided, grouped by context.
 
@@ -119,9 +119,9 @@ Below is an overview of many of the aliases, custom functions, and helpful featu
 - **`gra`** – `git rebase --abort`.
 - **`grc`** – `git rebase --continue`.
 - **`gst`** – `git status`.
-- **`gnap`** – A helper that adds all changes in “intent to add” mode, does partial interactive add, and then a `gref` (not in the snippet, but presumably a custom reference to commit or stash).
+- **`gnap`** – Marks new files as “intent to add”, then runs `git add -p`, so you can stage new files hunk by hunk too.
 - **`glg`** – Graphical log (`git log --graph --oneline --decorate --color --all`).
-- **`prunemerged`** – Removes branches that have been merged into your current branch.
+- **`prunemerged`** – Deletes local branches already merged into your current branch (keeps `master` and `dev`).
 
 </details>
 
@@ -143,8 +143,8 @@ Below is an overview of many of the aliases, custom functions, and helpful featu
 
 - **`rl`** – Reloads Zsh config by sourcing `~/.zshrc`.
 - **`cat`** – Actually calls `bat`, for a colorized `cat` replacement.
-- **`cd..`** – Same as `..`, moves up one directory.
 - **`fd`** – [fd](https://github.com/sharkdp/fd) installed as an alternative to `find`.
+- **`cf`** – Starts Claude Code with the factory plugin from `~/projects/factory`.
 - The environment sets a few paths for asdf, cargo (Rust), etc.
 
 And much more—just check out the `.zshrc` for details!
@@ -158,12 +158,12 @@ And much more—just check out the `.zshrc` for details!
 
 - **[fzf.vim](https://github.com/junegunn/fzf.vim)** – Fuzzy finder integration.
   - `:Files` – Opens an fzf-based file finder.
-  - `:Rg` / `:Rgg` – Searches with `ripgrep`, displayed in an fzf preview window.
+  - `:Rg` – Searches with `ripgrep`, displayed in an fzf preview window.
   - `:Find` – Searches for the word under cursor in the project using `ripgrep`.
 
 - **[vim-plug](https://github.com/junegunn/vim-plug)** – Plugin manager. `setup.sh` installs plugins; run `:PlugInstall` after adding new ones.
 
-- **[tpope/vim-rails](https://github.com/tpope/vim-rails)**, [vim-bundler](https://github.com/tpope/vim-bundler), [vim-rake](https://github.com/tpope/vim-rake)** – Powerful Ruby & Rails enhancements.
+- **[vim-rails](https://github.com/tpope/vim-rails)**, **[vim-bundler](https://github.com/tpope/vim-bundler)**, **[vim-rake](https://github.com/tpope/vim-rake)** – Powerful Ruby & Rails enhancements.
 
 - **[vim-elixir](https://github.com/elixir-editors/vim-elixir)** – Elixir syntax & indentation.
 
@@ -178,7 +178,7 @@ And much more—just check out the `.zshrc` for details!
 
 ### Key Mappings / Features
 
-- **Leader key** is mapped to <kbd>Space</kbd> in many places.
+- **Leader key** is the default `\` (backslash). <kbd>Space</kbd> is disabled in normal and visual mode.
 - **`<leader>t=`** – Align on `=`.
 - **`<leader>w`** – Writes the file (`:w`).
 - **`<leader>q`** – Quits and closes everything (`:wqa`).
@@ -210,7 +210,7 @@ And many more convenience or alignment commands (see `.vimrc` comments for speci
   - <kbd>Up Arrow</kbd> – Temporarily zoom a pane (`resize-pane -Z`).
   - <kbd>Down Arrow</kbd> – Same as above.
 - **Window management**:
-  - `<prefix> + |` – Split window vertically.
+  - `<prefix> + |` – Split window side by side.
   - `<prefix> + h/j/k/l` – Move around panes.
 - **Scrolling**
   - Mouse mode is on. Scroll with mouse wheel to go into copy-mode automatically.
@@ -221,12 +221,23 @@ And many more convenience or alignment commands (see `.vimrc` comments for speci
 ## Other Tools & Extras
 
 - **asdf** is installed and configured for multiple languages (Elixir, Erlang, Flutter, Node.js, Python, Ruby, Rust, Postgres).
+- **Postgres.app** is installed from the `Brewfile` and runs the local database server; its `psql`, `pg_dump`, and friends are on your `PATH`.
 - **starship** prompt is enabled in `.zshrc`, giving a minimal, fast, configurable prompt.
 - **`brew bundle`** in `setup.sh` automatically installs all the formulae from the `Brewfile`.
 - **`nvim`** is the main editor; `vim` and `vi` are aliased to `nvim`.
 - **Ripgrep** (`rg`) is used by default for searching within projects; integrated into Vim with `fzf`.
 - **Bat** (`bat`) is used for colorful `cat` replacements.
 - **Zsh Syntax Highlighting**, **Zsh Autosuggestions** are both loaded for a more user-friendly shell.
+
+---
+
+## Scripts in `bin/`
+
+Setup links these into `~/bin`, which is on your `PATH`.
+
+- **`mux [project]`** – Creates or reattaches to a tmux session named after the project, with `code`, `server`, and `agent` windows. With no argument it uses the current directory; with a name it uses `~/projects/<name>`.
+- **`restore-db-backup [backup_id | file.dump]`** – Restores a Postgres dump into the current Rails project's database, reading connection details from `config/database.yml`.
+- **`qunit-test-hash`** – Prints the QUnit test ID hash for a module and test name, for running a single Ember test.
 
 ---
 
