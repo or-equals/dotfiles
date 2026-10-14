@@ -53,7 +53,7 @@ Follow these steps to configure your development environment:
 
 4. **Follow the list at the end of setup.**
 
-   Setup installs your Vim plugins itself, then lists only what's left for you, like signing in to Claude Code and grok.
+   Setup installs your Vim plugins itself, then lists only what's left for you: creating `~/.gitconfig.local` if git doesn't know who you are yet, and signing in to Claude Code and grok.
 
 ---
 

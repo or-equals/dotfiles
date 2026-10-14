@@ -154,6 +154,9 @@ printf '\n  %s✔ Machine setup complete%s %s\n\n' "$green" "$reset" "$duration"
 
 # Only list what setup couldn't finish on its own
 todo="Open a new terminal"
+{ git config --global --includes user.name && git config --global --includes user.email; } >/dev/null ||
+  todo="$todo
+Create ${bold}~/.gitconfig.local${reset} with your name and email (see README). Git won't commit without them"
 ~/.local/bin/claude auth status 2>/dev/null | grep -q '"loggedIn": true' ||
   todo="$todo
 Sign in to Claude Code: run ${bold}claude${reset}"
