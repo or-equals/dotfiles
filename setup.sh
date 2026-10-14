@@ -72,15 +72,6 @@ step "Upgrade npm" npm install -g npm
 
 #######################################################
 #
-# Neovim
-#
-#######################################################
-section "Neovim"
-step "Install vim-plug" curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-step "Install pynvim" python -m pip install --quiet --upgrade pip pynvim
-
-#######################################################
-#
 # Symlink dotfiles into ~
 #
 #######################################################
@@ -100,6 +91,17 @@ do
   ln -sf "$dotfiles/$file" ~/"$file"
 done
 printf '  %s✔%s Linked into %s\n' "$green" "$reset" "$HOME"
+
+#######################################################
+#
+# Neovim (after the symlinks, so it reads ~/.vimrc)
+#
+#######################################################
+section "Neovim"
+step "Install vim-plug" curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+step "Install pynvim" python -m pip install --quiet --upgrade pip pynvim
+step "Install Vim plugins" nvim --headless "+PlugInstall --sync" +qa
+step "Register remote plugins" nvim --headless +UpdateRemotePlugins +qa
 
 #######################################################
 #
@@ -149,8 +151,21 @@ done <<'BANNER'
 BANNER
 
 printf '\n  %s✔ Machine setup complete%s %s\n\n' "$green" "$reset" "$duration"
-printf '  %sA few things only you can do:%s\n' "$bold" "$reset"
-printf '    1. Open a new terminal\n'
-printf '    2. Create ~/.gitconfig.local and ~/.zshrc.local (see README)\n'
-printf '    3. Sign in: run %sclaude%s, then %sgrok%s\n' "$bold" "$reset" "$bold" "$reset"
-printf '    4. In nvim, run %s:PlugInstall%s then %s:UpdateRemotePlugins%s\n\n' "$bold" "$reset" "$bold" "$reset"
+
+# Only list what setup couldn't finish on its own
+todo="Open a new terminal"
+~/.local/bin/claude auth status 2>/dev/null | grep -q '"loggedIn": true' ||
+  todo="$todo
+Sign in to Claude Code: run ${bold}claude${reset}"
+grep -q 'auth.x.ai' ~/.grok/auth.json 2>/dev/null ||
+  todo="$todo
+Sign in to grok: run ${bold}grok login${reset}"
+
+printf '  %sLeft for you:%s\n' "$bold" "$reset"
+n=1
+printf '%s\n' "$todo" | while IFS= read -r item
+do
+  printf '    %d. %s\n' "$n" "$item"
+  n=$((n + 1))
+done
+echo
