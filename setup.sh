@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+setup_started_at=$(date +%s)
+
 #######################################################
 #
 # Homebrew install & application installation
@@ -101,3 +103,33 @@ echo "Symlink or create your .zshrc.local file"
 #######################################################
 mkdir ~/projects
 npm install -g npm
+
+#######################################################
+#
+# Victory lap
+#
+#######################################################
+esc=$(printf '\033')
+reset="${esc}[0m"
+bold="${esc}[1m"
+green="${esc}[1;32m"
+dim="${esc}[2m"
+
+echo
+color=46
+while IFS= read -r line
+do
+  printf '%s\n' "${esc}[38;5;${color}m${line}${reset}"
+  color=$((color + 1))
+done <<'BANNER'
+  ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
+  ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
+  ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
+  ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
+  ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
+  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+BANNER
+
+elapsed=$(( $(date +%s) - setup_started_at ))
+printf '\n  %s✔ Machine setup complete%s %sin %dm %ds%s\n' "$green" "$reset" "$dim" $((elapsed / 60)) $((elapsed % 60)) "$reset"
+printf '  %s→ Open a new terminal and go build something.%s\n\n' "$bold" "$reset"
