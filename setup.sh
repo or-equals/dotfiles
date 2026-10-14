@@ -153,22 +153,28 @@ BANNER
 printf '\n  %s✔ Machine setup complete%s %s\n\n' "$green" "$reset" "$duration"
 
 # Only list what setup couldn't finish on its own
-todo="Open a new terminal"
-{ git config --global --includes user.name && git config --global --includes user.email; } >/dev/null ||
-  todo="$todo
-Create ${bold}~/.gitconfig.local${reset} with your name and email (see README). Git won't commit without them"
-~/.local/bin/claude auth status 2>/dev/null | grep -q '"loggedIn": true' ||
-  todo="$todo
-Sign in to Claude Code: run ${bold}claude${reset}"
-grep -q 'auth.x.ai' ~/.grok/auth.json 2>/dev/null ||
-  todo="$todo
-Sign in to grok: run ${bold}grok login${reset}"
+todo_count=0
+todo() {
+  todo_count=$((todo_count + 1))
+  printf '    %d. %s\n' "$todo_count" "$1"
+}
 
 printf '  %sLeft for you:%s\n' "$bold" "$reset"
-n=1
-printf '%s\n' "$todo" | while IFS= read -r item
-do
-  printf '    %d. %s\n' "$n" "$item"
-  n=$((n + 1))
-done
+todo "Open a new terminal"
+
+if ! { git config --global --includes user.name && git config --global --includes user.email; } >/dev/null
+then
+  todo "Create ${bold}~/.gitconfig.local${reset} with your details. Git won't commit without them:"
+  printf '%s\n' \
+    "${dim}         [user]" \
+    '           name = Your Name' \
+    '           email = you@example.com' \
+    '         [github]' \
+    "           user = your-github-username${reset}"
+fi
+
+~/.local/bin/claude auth status 2>/dev/null | grep -q '"loggedIn": true' ||
+  todo "Sign in to Claude Code: run ${bold}claude${reset}"
+grep -q 'auth.x.ai' ~/.grok/auth.json 2>/dev/null ||
+  todo "Sign in to grok: run ${bold}grok login${reset}"
 echo
